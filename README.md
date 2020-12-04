@@ -1,2 +1,2 @@
 # bilerman-ui
-place of sharing your insightful ideas heard
+place of making your insightful ideas heard
