@@ -3,15 +3,20 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NProgress from 'nprogress'
 import { Helmet } from 'react-helmet'
-// import Loader from 'components/cleanui/layout/Loader'
-import PublicLayout from './Public'
-import AuthLayout from './Auth'
 import MainLayout from './Main'
+import AuthLayout from './Auth'
+import PublicLayout from './Public'
+import BlankLayout from './Blank'
+import SettingsLayout from './Settings'
+import AdminLayout from './Admin'
 
 const Layouts = {
-  public: PublicLayout,
-  auth: AuthLayout,
   main: MainLayout,
+  auth: AuthLayout,
+  public: PublicLayout,
+  blank: BlankLayout,
+  settings: SettingsLayout,
+  admin: AdminLayout,
 }
 
 const mapStateToProps = ({ user }) => ({ user })
@@ -31,8 +36,25 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
 
   // Layout Rendering
   const getLayout = () => {
-    if (pathname === '/') {
-      return 'public'
+    // if (pathname === '/') {
+    //   return 'public'
+    // }
+    if (pathname === '/settings') {
+      return 'settings'
+    }
+    if (
+      /^\/dashboard(?=\/|$)/i.test(pathname) ||
+      /^\/ecommerce(?=\/|$)/i.test(pathname) ||
+      /^\/apps(?=\/|$)/i.test(pathname) ||
+      /^\/widgets(?=\/|$)/i.test(pathname) ||
+      /^\/cards(?=\/|$)/i.test(pathname) ||
+      /^\/ui-kits(?=\/|$)/i.test(pathname) ||
+      /^\/tables(?=\/|$)/i.test(pathname) ||
+      /^\/charts(?=\/|$)/i.test(pathname) ||
+      /^\/icons(?=\/|$)/i.test(pathname) ||
+      /^\/advanced(?=\/|$)/i.test(pathname)
+    ) {
+      return 'admin'
     }
     if (/^\/auth(?=\/|$)/i.test(pathname)) {
       return 'auth'
@@ -60,7 +82,7 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
 
   return (
     <Fragment>
-      <Helmet titleTemplate="Clean UI Pro React | %s" title="React Admin Template" />
+      <Helmet titleTemplate="Bilerman | %s" title="Where good ideas find you." />
       {BootstrappedLayout()}
     </Fragment>
   )

@@ -3,12 +3,8 @@ import { Layout } from 'antd'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import TopBar from 'components/cleanui/layout/TopBar'
-import Breadcrumbs from 'components/cleanui/layout/Breadcrumbs'
-import Menu from 'components/cleanui/layout/Menu'
-import Footer from 'components/cleanui/layout/Footer'
-import Sidebar from 'components/cleanui/layout/Sidebar'
-import SupportChat from 'components/cleanui/layout/SupportChat'
+import TopBar from './topbar'
+import Footer from '../components/Footer'
 
 const mapStateToProps = ({ settings }) => ({
   isContentMaxWidth: settings.isContentMaxWidth,
@@ -19,6 +15,7 @@ const mapStateToProps = ({ settings }) => ({
   isBorderless: settings.isBorderless,
   isTopbarFixed: settings.isTopbarFixed,
   isGrayTopbar: settings.isGrayTopbar,
+  theme: settings.theme,
 })
 
 const MainLayout = ({
@@ -31,6 +28,7 @@ const MainLayout = ({
   isBorderless,
   isTopbarFixed,
   isGrayTopbar,
+  theme,
 }) => {
   return (
     <div className={classNames({ cui__layout__grayBackground: isGrayBackground })}>
@@ -44,9 +42,6 @@ const MainLayout = ({
           cui__layout__borderless: isBorderless,
         })}
       >
-        <Sidebar />
-        <SupportChat />
-        <Menu />
         <Layout>
           <Layout.Header
             className={classNames('cui__layout__header', {
@@ -54,9 +49,8 @@ const MainLayout = ({
               cui__layout__headerGray: isGrayTopbar,
             })}
           >
-            <TopBar />
+            <TopBar theme={theme} />
           </Layout.Header>
-          <Breadcrumbs />
           <Layout.Content style={{ height: '100%', position: 'relative' }}>
             <div className="cui__utils__content">{children}</div>
           </Layout.Content>

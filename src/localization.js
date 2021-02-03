@@ -3,16 +3,14 @@ import { ConfigProvider } from 'antd'
 import { IntlProvider } from 'react-intl'
 import { connect } from 'react-redux'
 
-import english from './locales/en-US'
-import french from './locales/fr-FR'
+import kyrgyz from './locales/ky-KG'
 import russian from './locales/ru-RU'
-import chinese from './locales/zh-CN'
+import english from './locales/en-US'
 
 const locales = {
-  'en-US': english,
-  'fr-FR': french,
+  'ky-KG': kyrgyz,
   'ru-RU': russian,
-  'zh-CN': chinese,
+  'en-US': english,
 }
 
 const mapStateToProps = ({ settings }) => ({ settings })

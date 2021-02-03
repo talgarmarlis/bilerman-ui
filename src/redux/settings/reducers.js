@@ -14,7 +14,7 @@ const initialState = {
   ...STORED_SETTINGS({
     authProvider: 'jwt', // firebase, jwt
     logo: 'Bilerman',
-    locale: 'en-US',
+    locale: 'ky-KG',
     isSidebarOpen: false,
     isSupportChatOpen: false,
     isMobileView: false,

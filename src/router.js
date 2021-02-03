@@ -8,6 +8,64 @@ import { connect } from 'react-redux'
 import Layout from 'layouts'
 
 const routes = [
+  // Home
+  {
+    path: '/',
+    Component: lazy(() => import('pages/home')),
+    exact: true,
+    title: 'Home',
+  },
+  // Auth Pages
+  {
+    path: '/auth/login',
+    Component: lazy(() => import('pages/auth/login')),
+    exact: true,
+  },
+  {
+    path: '/auth/password/forgot',
+    Component: lazy(() => import('pages/auth/password/forgot')),
+    exact: true,
+  },
+  {
+    path: '/auth/password/reset/:token',
+    Component: lazy(() => import('pages/auth/password/reset')),
+    exact: true,
+  },
+  {
+    path: '/auth/register',
+    Component: lazy(() => import('pages/auth/register')),
+    exact: true,
+  },
+  {
+    path: '/auth/confirm/:token',
+    Component: lazy(() => import('pages/auth/confirm')),
+    exact: true,
+    title: 'Confirm',
+  },
+  {
+    path: '/auth/lockscreen',
+    Component: lazy(() => import('pages/auth/lockscreen')),
+    exact: true,
+  },
+  {
+    path: '/auth/404',
+    Component: lazy(() => import('pages/auth/404')),
+    exact: true,
+  },
+  {
+    path: '/auth/500',
+    Component: lazy(() => import('pages/auth/500')),
+    exact: true,
+  },
+
+  // settings
+  {
+    path: '/settings',
+    Component: lazy(() => import('pages/settings')),
+    exact: true,
+    title: 'Settings',
+  },
+
   // Dashboards
   {
     path: '/dashboard/alpha',
@@ -276,48 +334,6 @@ const routes = [
     Component: lazy(() => import('pages/advanced/colors')),
     exact: true,
   },
-  // Auth Pages
-  {
-    path: '/auth/login',
-    Component: lazy(() => import('pages/auth/login')),
-    exact: true,
-  },
-  {
-    path: '/auth/password/forgot',
-    Component: lazy(() => import('pages/auth/password/forgot')),
-    exact: true,
-  },
-  {
-    path: '/auth/password/reset/:token',
-    Component: lazy(() => import('pages/auth/password/reset')),
-    exact: true,
-  },
-  {
-    path: '/auth/register',
-    Component: lazy(() => import('pages/auth/register')),
-    exact: true,
-  },
-  {
-    path: '/auth/confirm/:token',
-    Component: lazy(() => import('pages/auth/confirm')),
-    exact: true,
-    title: 'Confirm',
-  },
-  {
-    path: '/auth/lockscreen',
-    Component: lazy(() => import('pages/auth/lockscreen')),
-    exact: true,
-  },
-  {
-    path: '/auth/404',
-    Component: lazy(() => import('pages/auth/404')),
-    exact: true,
-  },
-  {
-    path: '/auth/500',
-    Component: lazy(() => import('pages/auth/500')),
-    exact: true,
-  },
 ]
 
 const mapStateToProps = ({ settings }) => ({
@@ -340,7 +356,7 @@ const Router = ({ history, routerAnimation }) => {
                   timeout={routerAnimation === 'none' ? 0 : 300}
                 >
                   <Switch location={location}>
-                    <Route exact path="/" render={() => <Redirect to="/dashboard/alpha" />} />
+                    {/* <Route exact path="/" render={() => <Redirect to="/dashboard/alpha" />} /> */}
                     {routes.map(({ path, Component, exact, title }) => (
                       <Route
                         path={path}

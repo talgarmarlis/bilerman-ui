@@ -3,33 +3,31 @@ import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import Sidebar from 'components/cleanui/layout/Sidebar'
-import SupportChat from 'components/cleanui/layout/SupportChat'
+import Logo from '../components/Logo'
+import Footer from '../components/Footer'
 import style from './style.module.scss'
 
 const mapStateToProps = ({ settings }) => ({
-  logo: settings.logo,
   isGrayTopbar: settings.isGrayTopbar,
   isCardShadow: settings.isCardShadow,
   isSquaredBorders: settings.isSquaredBorders,
   isBorderless: settings.isBorderless,
   authPagesColor: settings.authPagesColor,
+  theme: settings.theme,
 })
 
 const AuthLayout = ({
   children,
-  logo,
   isGrayTopbar,
   isCardShadow,
   isSquaredBorders,
   isBorderless,
   authPagesColor,
+  theme,
 }) => {
   return (
     <Layout>
       <Layout.Content>
-        <Sidebar />
-        <SupportChat />
         <div
           className={classNames(`${style.container}`, {
             cui__layout__squaredBorders: isSquaredBorders,
@@ -48,53 +46,18 @@ const AuthLayout = ({
               [style.topbarGray]: isGrayTopbar,
             })}
           >
-            <div className={style.logoContainer}>
-              <div className={style.logo}>
-                <img src="resources/images/logo.svg" className="mr-2" alt="Clean UI" />
-                <div className={style.name}>{logo}</div>
-                {logo === 'Clean UI Pro' && <div className={style.descr}>React</div>}
-              </div>
-            </div>
+            <Logo theme={theme} />
             <div className="d-none d-sm-block">
-              <span className="mr-2">Don&#39;t have an account?</span>
+              <Link to="/auth/login" className="font-size-16 kit__utils__link mr-3">
+                Sign in
+              </Link>
               <Link to="/auth/register" className="font-size-16 kit__utils__link">
                 Sign up
               </Link>
             </div>
           </div>
           <div className={style.containerInner}>{children}</div>
-          <div className="mt-auto pb-5 pt-5">
-            <ul
-              className={`${style.footerNav} list-unstyled d-flex mb-0 flex-wrap justify-content-center`}
-            >
-              <li>
-                <a href="#" onClick={e => e.preventDefault()}>
-                  Terms of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={e => e.preventDefault()}>
-                  Compliance
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={e => e.preventDefault()}>
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={e => e.preventDefault()}>
-                  Contacts
-                </a>
-              </li>
-            </ul>
-            <div className="text-center">
-              Copyright © 2017-2020 Mdtk Soft |{' '}
-              <a href="https://www.mediatec.org/privacy" target="_blank" rel="noopener noreferrer">
-                Privacy Policy
-              </a>
-            </div>
-          </div>
+          <Footer />
         </div>
       </Layout.Content>
     </Layout>
