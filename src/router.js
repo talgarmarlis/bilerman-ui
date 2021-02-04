@@ -15,6 +15,21 @@ const routes = [
     exact: true,
     title: 'Home',
   },
+
+  // Author pages
+  {
+    path: '/author/drafts',
+    Component: lazy(() => import('pages/author/drafts')),
+    exact: true,
+  },
+
+  // Article pages
+  {
+    path: '/article/editor',
+    Component: lazy(() => import('pages/article/editor')),
+    exact: true,
+  },
+
   // Auth Pages
   {
     path: '/auth/login',

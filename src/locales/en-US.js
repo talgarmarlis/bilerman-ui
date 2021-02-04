@@ -17,6 +17,7 @@ const messages = {
 }
 
 export default {
+  code: 'en',
   locale: 'en-US',
   localeAntd,
   messages,

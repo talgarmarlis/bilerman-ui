@@ -17,6 +17,7 @@ const messages = {
 }
 
 export default {
+  code: 'ru',
   locale: 'ru-RU',
   localeAntd,
   messages,

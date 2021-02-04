@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import style from './style.module.scss'
 
 const Logo = ({ theme = 'default' }) => {
-  console.log(theme)
   return (
     <div className={style.logoContainer}>
       <div className={style.logo}>

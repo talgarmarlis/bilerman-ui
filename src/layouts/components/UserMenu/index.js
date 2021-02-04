@@ -47,13 +47,13 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a href="#" onClick={e => e.preventDefault()}>
+        <a href="#/article/editor">
           <i className="fe fe-feather mr-2" />
           New Story
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a href="#" onClick={e => e.preventDefault()}>
+        <a href="#/author/drafts">
           <i className="fe fe-layers mr-2" />
           Drafts
         </a>

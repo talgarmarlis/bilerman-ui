@@ -2,6 +2,9 @@ import React from 'react'
 import { ConfigProvider } from 'antd'
 import { IntlProvider } from 'react-intl'
 import { connect } from 'react-redux'
+import moment from 'moment'
+import 'moment/locale/ky'
+import 'moment/locale/ru'
 
 import kyrgyz from './locales/ky-KG'
 import russian from './locales/ru-RU'
@@ -17,6 +20,7 @@ const mapStateToProps = ({ settings }) => ({ settings })
 
 const Localization = ({ children, settings: { locale } }) => {
   const currentLocale = locales[locale]
+  moment.locale(currentLocale.code)
   return (
     <ConfigProvider locale={currentLocale.localeAntd}>
       <IntlProvider locale={currentLocale.locale} messages={currentLocale.messages}>

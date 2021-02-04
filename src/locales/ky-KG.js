@@ -17,6 +17,7 @@ const messages = {
 }
 
 export default {
+  code: 'ky',
   locale: 'ky-KG',
   localeAntd,
   messages,
