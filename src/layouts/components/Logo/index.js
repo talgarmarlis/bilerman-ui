@@ -9,14 +9,14 @@ const Logo = ({ theme = 'default' }) => {
         <Link to="/">
           {theme === 'default' && (
             <img
-              src="resources/images/brand/bilerman-logo-dark.png"
+              src="resources/images/brand/bilerman-dot-logo-dark.png"
               className="mr-2"
               alt="Bilerman logo"
             />
           )}
           {theme === 'dark' && (
             <img
-              src="resources/images/brand/bilerman-logo-white.png"
+              src="resources/images/brand/bilerman-dot-logo-white.png"
               className="mr-2"
               alt="Bilerman logo"
             />

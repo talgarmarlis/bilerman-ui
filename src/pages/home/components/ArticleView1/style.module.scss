@@ -1,0 +1,31 @@
+@import 'components/mixins.scss';
+
+.head {
+  background-size: cover;
+  background-position: center center;
+  border-radius: 5px;
+}
+
+.overlay {
+  z-index: 10;
+  opacity: 1;
+  position: absolute;
+  border-radius: 5px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba($blrmn-red, 0.7), rgba($blrmn-dark, 0.7));
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: rem(20);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

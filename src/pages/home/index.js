@@ -1,17 +1,20 @@
 import React from 'react'
+import Banner from "./banner";
+import Latest from "./latest";
+import Topics from "./topics";
+import Tags from "./tags";
 
 const Home = () => {
   return (
     <div>
-      <div className="container">
-        <div className="text-dark text-center font-size-24 mb-4">
-          <strong>Hi bro</strong>
+      <Banner />
+      <div className="row">
+        <div className="col-xl-7 col-lg-12">
+          <Latest />
         </div>
-        <div className="text-center">
-          <div className="font-size-18 text-dark mb-4">
-            <strong>Welcome home</strong>
-          </div>
-          <div className="font-size-18 text-dark mb-4">Bilerman incorporations</div>
+        <div className="col-xl-5 col-lg-12">
+          <Topics />
+          <Tags />
         </div>
       </div>
     </div>

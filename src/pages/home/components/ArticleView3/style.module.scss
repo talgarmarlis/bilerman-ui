@@ -1,0 +1,38 @@
+@import 'components/mixins.scss';
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: rem(20);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.itemContent {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  width: rem(150);
+  height: rem(150);
+
+  &:hover {
+    .itemControl {
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: rem(184);
+  }
+}
