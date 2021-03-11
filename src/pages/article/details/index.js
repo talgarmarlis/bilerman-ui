@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { articleService } from 'services'
+import Details from "./details";
+import Author from "./author";
+import Profile from "./profile";
 
 class ArticleDetails extends Component {
 
@@ -21,11 +24,19 @@ class ArticleDetails extends Component {
     const { article } = this.state
     return (
       <div>
-        <div>
+        {article &&
           <div className="row">
-            {article && <h1>{article.title}</h1>}
+            <div className="col-lg-9 col-md-12">
+              <div className="d-block"><Details article={article} /></div>
+              <Profile author={article.user} />
+            </div>
+            <div className="col-lg-3 col-md-12">
+              <div className="d-none d-lg-block">
+                <Author article={article} />
+              </div>
+            </div>
           </div>
-        </div>
+        }
       </div>
     )
   }

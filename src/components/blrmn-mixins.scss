@@ -12,28 +12,30 @@ $gray-5: #a1a1c2;
 $gray-6: #595c97;
 $yellow: #ff0;
 $orange: #faad15;
-$red: #f5222e;
+$red: rgba(#EB7260, 0.5);;
 $pink: #fd3995;
 $purple: #652eff;
 $green: #41b883;
 
 //bilerman colors
-$blrmn-dark: #354458;
-$blrmn-light: #E9E0D6;
-$blrmn-red: #EB7260;
+$blrmn-1: #354458;
+$blrmn-2: #EB7260;
+$blrmn-3: #E9E0D6;
+$blrmn-3-light: rgba($blrmn-3, 0.5);
 
-$text: $blrmn-dark;
+$text: $blrmn-1;
 $border: $gray-2;
 
 // Accent colors
-$default: $blrmn-dark;
-$primary: $blrmn-red;
-$secondary: $blrmn-light;
+$default: $blrmn-1;
+$primary: $blrmn-2;
+$secondary: $blrmn-3;
 $success: $green;
 $info: $blue-light;
 $warning: $orange;
 $danger: $red;
-$light: $gray-1;
+$light: $blrmn-3-light;
+//$light: $gray-1;
 $dark: $black;
 
 // dark theme

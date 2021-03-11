@@ -11,7 +11,7 @@ const Topics = () => {
           <div className="font-size-24 font-weight-bold text-default">Hot topics</div>
         </div>
       </div>
-      <div className="card bg-secondary">
+      <div className="card bg-light border-0">
         <div className="card-body">
           <div className="d-flex flex-wrap align-items-center">
             <div className="font-size-21 font-weight-bold text-primary mr-3">Creativity</div>

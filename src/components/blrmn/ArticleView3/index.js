@@ -12,7 +12,7 @@ import style from './style.module.scss'
 const ArticleView3 = ({ article }) => {
   return (
     <>
-      <div className="card bg-secondary">
+      <div className="card bg-light border-0 shadow-none">
         <div className="card-body">
           <div className="d-flex flex-nowrap align-items-start">
             <div className="flex-grow-1 mr-3">
@@ -20,7 +20,7 @@ const ArticleView3 = ({ article }) => {
                 <div className="d-flex flex-wrap mb-1">
                   <div className="mr-auto">
                     <div className={style.item}>
-                      <Avatar author={article.user} size={27} />
+                      <div className="mr-2"><Avatar author={article.user} size={27} /></div>
                       <Link to={`/author/profile/${article.user.id}`}>
                         <div className="font-weight-bold text-default mr-2">{`${article.user.name} ${article.user.surname}`}</div>
                       </Link>
@@ -28,9 +28,7 @@ const ArticleView3 = ({ article }) => {
                     </div>
                   </div>
                   <div className="nav-item dropdown">
-                    <span>
-                      <Bookmark articleId={article.id} type="primary" />
-                    </span>
+                    <Bookmark articleId={article.id} type="primary" />
                   </div>
                 </div>
                 <Link to={`/article/details/${article.id}`}>

@@ -4,6 +4,7 @@
   background-size: cover;
   background-position: center center;
   border-radius: 5px;
+  height: 234px;
 }
 
 .overlay {
@@ -15,7 +16,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(rgba($blrmn-red, 0.7), rgba($blrmn-dark, 0.7));
+  background-color: rgba($blrmn-1, 0.7);
 }
 
 .item {

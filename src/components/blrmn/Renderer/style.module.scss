@@ -1,0 +1,205 @@
+@import 'components/mixins.scss';
+
+.container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.status {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  width: 6px;
+  z-index: 1;
+}
+
+.footer {
+  background: $gray-1;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: rem(20);
+
+  .control {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .controlIndicator {
+    flex-shrink: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.control {
+  display: block;
+  position: relative;
+  margin-bottom: rem(10);
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &Indicator {
+    margin-right: rem(8);
+    vertical-align: super;
+    position: relative;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background: $gray-2;
+    border-radius: 3px;
+
+    &:after {
+      position: absolute;
+      display: none;
+      content: '';
+    }
+  }
+
+  &:hover input ~ .controlIndicator,
+  input:focus ~ .controlIndicator {
+    background: $gray-3;
+  }
+
+  input:checked ~ .controlIndicator {
+    background: $primary;
+  }
+
+  &:hover input:not([disabled]):checked ~ .controlIndicator,
+  .control input:checked:focus ~ .controlIndicator {
+    background: $primary;
+    opacity: 0.8;
+  }
+
+  input:disabled ~ .controlIndicator {
+    pointer-events: none;
+    opacity: 0.6;
+    background: $gray-2;
+  }
+
+  input:checked ~ .controlIndicator:after {
+    display: block;
+  }
+
+  &.checkbox {
+    .controlIndicator:after {
+      top: 3px;
+      left: 6px;
+      width: 6px;
+      height: 10px;
+      transform: rotate(45deg);
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+    }
+
+    input:disabled ~ .controlIndicator:after {
+      border-color: #7b7b7b;
+    }
+  }
+}
+
+.table {
+  white-space: nowrap !important;
+  :global(.ant-table-body) {
+    overflow-x: auto !important;
+  }
+}
+
+.textDivider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  &::before {
+    content: '';
+    height: 1px;
+    width: 10%;
+    margin-left: auto;
+    background-color: $gray-2;
+  }
+
+  &::after {
+    content: '';
+    height: 1px;
+    width: 10%;
+    margin-right: auto;
+    background-color: $gray-2;
+  }
+
+  &Content {
+    padding-left: rem(24);
+    padding-right: rem(24);
+  }
+}
+
+.youtubeContainer {
+  overflow: hidden;
+  position: relative;
+  width:100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.youtubeContainer::after {
+  padding-top: 56.25%;
+  display: block;
+  content: '';
+}
+
+.instagramContainer {
+  overflow: hidden;
+  position: relative;
+  width:100%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.instagramContainer::after {
+  padding-top: 100%;
+  display: block;
+  content: '';
+}
+
+// dark theme
+[data-kit-theme='dark'] {
+  .footer {
+    background: $dark-gray-4;
+  }
+
+  .textDivider {
+    &::before,
+    &::after {
+      background-color: $dark-gray-4;
+    }
+  }
+}

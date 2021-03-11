@@ -9,10 +9,10 @@ const Home = () => {
     <div>
       <Banner />
       <div className="row">
-        <div className="col-xl-7 col-lg-12">
+        <div className="col-lg-7 col-md-12">
           <Latest />
         </div>
-        <div className="col-xl-5 col-lg-12">
+        <div className="col-lg-5 col-md-12">
           <Topics />
           <Tags />
         </div>

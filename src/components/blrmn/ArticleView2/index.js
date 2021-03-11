@@ -9,12 +9,12 @@ import moment from 'moment'
 import config from "config";
 import style from "./style.module.scss";
 
-const ArticleView1 = ({article}) => {
+const ArticleView2 = ({article}) => {
   return (
-    <div className="card">
+    <div className="card border-0">
       <div>
         <div
-          className={`${style.head} height-500 d-flex flex-column`}
+          className={`${style.head} d-flex flex-column`}
           style={{
             backgroundImage: article.imageId != null ? `url(${config.apiUrl}/images/${article.imageId})` : 'url(resources/images/template/1.jpeg)',
           }}
@@ -23,18 +23,18 @@ const ArticleView1 = ({article}) => {
             <div className="mt-2 card-header card-header-flex border-bottom-0 align-items-center">
               <div className="d-flex flex-column justify-content-center mr-auto">
                 <Link to={`/article/details/${article.id}`}>
-                  <h5 className="mb-0 text-white font-weight-bold font-size-36">{article.title}</h5>
+                  <h5 className="mb-0 text-white font-weight-bold font-size-18">{article.title}</h5>
                 </Link>
               </div>
               <div><Bookmark articleId={article.id} type="white" /></div>
             </div>
             <Link to={`/article/details/${article.id}`}>
-              <div className="mt-3 card-body text-white font-size-21" dangerouslySetInnerHTML={{__html: article.subtitle}} />
+              <div className="card-body text-white font-size-10" dangerouslySetInnerHTML={{__html: article.subtitle}} />
             </Link>
             <div className="mt-auto mb-3 card-header card-header-flex align-items-center">
               <div className="d-flex flex-column justify-content-center mr-auto">
                 <div className={style.item}>
-                  <Avatar author={article.user} size={64} />
+                  <div className="mr-2"><Avatar author={article.user} type="primary" size={64} /></div>
                   <div className="flex-fill">
                     <Link to={`/author/profile/${article.user.id}`}>
                       <div className="font-weight-bold text-white">{`${article.user.name} ${article.user.surname}`}</div>
@@ -56,4 +56,4 @@ const ArticleView1 = ({article}) => {
   )
 }
 
-export default ArticleView1
+export default ArticleView2

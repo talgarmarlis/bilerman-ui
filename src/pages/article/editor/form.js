@@ -5,7 +5,7 @@ import {CameraOutlined, CloseOutlined, DeleteOutlined} from "@ant-design/icons";
 import {articleService, imageService} from "services";
 import classNames from 'classnames'
 import config from "config";
-import style from '../style.module.scss'
+import style from './style.module.scss'
 
 const { Dragger } = Upload
 const {TextArea} = Input

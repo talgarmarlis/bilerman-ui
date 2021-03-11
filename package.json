@@ -3,6 +3,7 @@
   "version": "3.3.0",
   "private": true,
   "scripts": {
+    "restart": "BROWSER=yandex react-app-rewired start",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "build-demo": "REACT_APP_AUTHENTICATED=true react-app-rewired build",
@@ -62,6 +63,7 @@
     "d3-time-format": "^2.2.3",
     "draft-js": "^0.11.5",
     "firebase": "^7.19.1",
+    "highlight.js": "^10.6.0",
     "history": "^4.10.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",

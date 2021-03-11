@@ -3,7 +3,7 @@ import EditorJs from 'react-editor-js';
 import {draftService} from "services";
 import PublicationForm from "./form";
 import EDITOR_JS_TOOLS  from './tools'
-import style from "../style.module.scss";
+import style from "./style.module.scss";
 
 class Editor extends React.Component {
 

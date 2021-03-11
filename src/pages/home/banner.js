@@ -1,7 +1,7 @@
 import React from 'react'
 import {articleService} from "services";
-import ArticleView1 from "./components/ArticleView1";
-import ArticleView2 from "./components/ArticleView2";
+import ArticleView1 from "components/blrmn/ArticleView1";
+import ArticleView2 from "components/blrmn/ArticleView2";
 
 class Banner extends React.Component {
 
@@ -22,12 +22,18 @@ class Banner extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xl-8 col-lg-12">
+          <div className="col-lg-8 col-md-12">
             {articles && <ArticleView1 article={articles[0]} />}
           </div>
-          <div className="col-xl-4 col-lg-12">
-            {articles && <ArticleView2 article={articles[1]} />}
-            {articles && <ArticleView2 article={articles[2]} />}
+          <div className="col-lg-4 col-md-12">
+            <div className="row">
+              <div className="col-md-6 col-lg-12">
+                {articles && <ArticleView2 article={articles[1]} />}
+              </div>
+              <div className="col-md-6 col-lg-12">
+                {articles && <ArticleView2 article={articles[2]} />}
+              </div>
+            </div>
           </div>
         </div>
       </div>

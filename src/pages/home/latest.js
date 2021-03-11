@@ -1,6 +1,6 @@
 import React from 'react'
 import {articleService} from "services";
-import ArticleView3 from "./components/ArticleView3";
+import ArticleView3 from "components/blrmn/ArticleView3";
 
 class Latest extends React.Component {
 
