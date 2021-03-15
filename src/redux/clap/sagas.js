@@ -20,13 +20,12 @@ export function* CLAP_ARTICLE({ payload, callback }) {
       },
     })
     yield callback()
-  }
-  catch(e) {
+  } catch (e) {
     yield put({
       type: 'clap/SET_STATE',
       payload: {
         loading: false,
-      }
+      },
     })
   }
 }
@@ -50,8 +49,7 @@ export function* LOAD_CLAPS() {
         },
       })
     }
-  }
-  catch(error) {
+  } catch (error) {
     yield put({
       type: 'clap/SET_STATE',
       payload: {
@@ -65,6 +63,5 @@ export default function* rootSaga() {
   yield all([
     takeEvery(actions.CLAP_ARTICLE, CLAP_ARTICLE),
     takeEvery(actions.LOAD_CLAPS, LOAD_CLAPS),
-    LOAD_CLAPS(), // run once on app load to check user auth
   ])
 }

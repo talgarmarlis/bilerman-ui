@@ -35,5 +35,5 @@ function saveDraft(draft) {
 }
 
 function deleteDraft(id) {
-  return apiClient.del(`/drafts/${id}`)
+  return apiClient.delete(`/drafts/${id}`)
 }

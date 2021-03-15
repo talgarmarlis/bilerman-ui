@@ -21,13 +21,12 @@ export function* BOOKMARK_ARTICLE({ payload, callback }) {
       },
     })
     yield callback()
-  }
-  catch(e) {
+  } catch (e) {
     yield put({
       type: 'bookmark/SET_STATE',
       payload: {
         loading: false,
-      }
+      },
     })
   }
 }
@@ -51,8 +50,7 @@ export function* LOAD_BOOKMARKS() {
         },
       })
     }
-  }
-  catch(error) {
+  } catch (error) {
     yield put({
       type: 'bookmark/SET_STATE',
       payload: {
@@ -66,6 +64,5 @@ export default function* rootSaga() {
   yield all([
     takeEvery(actions.BOOKMARK_ARTICLE, BOOKMARK_ARTICLE),
     takeEvery(actions.LOAD_BOOKMARKS, LOAD_BOOKMARKS),
-    LOAD_BOOKMARKS(), // run once on app load to check user auth
   ])
 }

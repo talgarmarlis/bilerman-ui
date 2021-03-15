@@ -3,20 +3,21 @@ import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import NProgress from 'nprogress'
 import { Helmet } from 'react-helmet'
+import routes from 'routes'
 import MainLayout from './Main'
 import AuthLayout from './Auth'
 import PublicLayout from './Public'
 import BlankLayout from './Blank'
-import SettingsLayout from './Settings'
 import AdminLayout from './Admin'
+import EditorLayout from './Editor'
 
 const Layouts = {
   main: MainLayout,
   auth: AuthLayout,
   public: PublicLayout,
   blank: BlankLayout,
-  settings: SettingsLayout,
   admin: AdminLayout,
+  editor: EditorLayout,
 }
 
 const mapStateToProps = ({ user }) => ({ user })
@@ -34,14 +35,21 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
     previousPath = currentPath
   }, 300)
 
+  const isPrivate = () => {
+    for (let i = 0; i < routes.length; i += 1) {
+      if (routes[i].path.includes(pathname)) {
+        if (routes[i].private) return true
+        return false
+      }
+    }
+    return false
+  }
+
+  const isUserAuthorized = user.authorized
+  const isUserLoading = user.loading
+  const isAuthPage = /^\/auth(?=\/|$)/i.test(pathname)
   // Layout Rendering
   const getLayout = () => {
-    // if (pathname === '/') {
-    //   return 'public'
-    // }
-    if (pathname === '/settings') {
-      return 'settings'
-    }
     if (
       /^\/dashboard(?=\/|$)/i.test(pathname) ||
       /^\/ecommerce(?=\/|$)/i.test(pathname) ||
@@ -53,27 +61,24 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
       /^\/charts(?=\/|$)/i.test(pathname) ||
       /^\/icons(?=\/|$)/i.test(pathname) ||
       /^\/advanced(?=\/|$)/i.test(pathname)
-    ) {
+    )
       return 'admin'
-    }
-    if (/^\/auth(?=\/|$)/i.test(pathname)) {
-      return 'auth'
-    }
-    return 'main'
+    if (pathname.includes('/article/editor')) return 'editor'
+    if (isUserAuthorized) return 'main'
+    if (isAuthPage) return 'auth'
+    return 'public'
   }
 
   const Container = Layouts[getLayout()]
-  const isUserAuthorized = user.authorized
-  const isUserLoading = user.loading
-  const isAuthLayout = getLayout() === 'auth'
+  const isPrivatePage = isPrivate()
 
   const BootstrappedLayout = () => {
     // show loader when user in check authorization process, not authorized yet and not on login pages
-    if (isUserLoading && !isUserAuthorized && !isAuthLayout) {
+    if (isUserLoading && !isUserAuthorized && !isAuthPage) {
       return null
     }
     // redirect to login page if current is not login page and user not authorized
-    if (!isAuthLayout && !isUserAuthorized) {
+    if (isPrivatePage && !isUserAuthorized) {
       return <Redirect to="/auth/login" />
     }
     // in other case render previously set layout

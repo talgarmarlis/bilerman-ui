@@ -1,11 +1,10 @@
 import axios from 'axios'
 import store from 'store'
-import { notification } from 'antd'
-
-const host = 'http://localhost:8080'
+// import { notification } from 'antd'
+import config from 'config'
 
 const apiClient = axios.create({
-  baseURL: `${host}/api`,
+  baseURL: config.apiUrl,
   // timeout: 1000,
   headers: { 'Content-Type': 'application/json' },
 })
@@ -24,9 +23,9 @@ apiClient.interceptors.response.use(undefined, error => {
   const { response } = error
   const { data } = response
   if (data) {
-    notification.warning({
-      message: data.message,
-    })
+    // notification.warning({
+    //   message: data.message,
+    // })
     return Promise.reject(data)
   }
   return Promise.reject(response)

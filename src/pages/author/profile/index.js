@@ -1,31 +1,41 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { userService } from 'services'
+import Info from './info'
+import Articles from './articles'
 
+@connect(({ user }) => ({ user }))
 class Profile extends Component {
-
   state = {
-    user: null
+    author: null,
   }
 
   componentDidMount() {
     const {
       match: { params },
+      user,
     } = this.props
-    userService.getUser(params.id)
-      .then(result => {
-        this.setState({ user: result.data })
-      })
+    let userId = user.id
+    if (params.id) userId = params.id
+    userService.getUser(userId).then(result => {
+      this.setState({ author: result.data })
+    })
   }
 
   render() {
-    const { user } = this.state
+    const { author } = this.state
     return (
       <div>
-        <div>
+        {author && (
           <div className="row">
-            {user && <h1>{user.name + user.surname}</h1>}
+            <div className="col-lg-12">
+              <Info author={author} />
+            </div>
+            <div className="col-lg-12">
+              <Articles author={author} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     )
   }

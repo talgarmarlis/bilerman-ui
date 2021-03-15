@@ -79,11 +79,11 @@ const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
         </Form>
         <div>
           <span className="mr-1">By signing up, you agree to the</span>
-          <a href="#" onClick={e => e.preventDefault()} className="kit__utils__link">
+          <a href="#/service/terms" className="kit__utils__link">
             Terms of Service
           </a>{' '}
           and{' '}
-          <a href="#" onClick={e => e.preventDefault()} className="kit__utils__link">
+          <a href="#/service/privacy-policy" className="kit__utils__link">
             Privacy Policy
           </a>
         </div>

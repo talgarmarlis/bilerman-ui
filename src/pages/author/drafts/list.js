@@ -1,22 +1,10 @@
 import React, { Component } from 'react'
-import { Dropdown, Menu, Pagination } from 'antd'
+import { Dropdown, Menu, Modal, Pagination } from 'antd'
+import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
 import { draftService } from 'services'
 
-const dropdownMenu = (
-  <Menu>
-    <Menu.Item>
-      <a>
-        <i className="dropdown-icon fe fe-edit mr-1" /> Edit
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a>
-        <i className="dropdown-icon fe fe-trash mr-1" /> Delete
-      </a>
-    </Menu.Item>
-  </Menu>
-)
+const { confirm } = Modal
 
 class DraftList extends Component {
   state = {
@@ -34,6 +22,31 @@ class DraftList extends Component {
     draftService.getUserDrafts(user.id, published, pageNumber, pageSize).then(result => {
       const page = result.data
       this.setState({ drafts: page.content, page })
+    })
+  }
+
+  handleDelete = draft => {
+    confirm({
+      title: 'Are you sure delete this article?',
+      icon: <DeleteOutlined />,
+      content: (
+        <div>
+          <div className="utils__title">
+            <strong>{draft.title}</strong>
+          </div>
+          <div className="utils__titleDescription">{draft.subtitle}</div>
+        </div>
+      ),
+      okText: 'Delete',
+      okType: 'danger',
+      cancelText: 'Cancel',
+      onOk: () => this.deleteDraft(draft.id),
+    })
+  }
+
+  deleteDraft = id => {
+    draftService.deleteDraft(id).then(() => {
+      this.load()
     })
   }
 
@@ -65,13 +78,31 @@ class DraftList extends Component {
                   </div>
                 </div>
                 <div className="nav-item dropdown">
-                  <Dropdown overlay={dropdownMenu} placement="bottomRight">
+                  <Dropdown
+                    overlay={
+                      <Menu>
+                        <Menu.Item>
+                          <a href={`/#/article/editor/${draft.id}`}>
+                            <i className="dropdown-icon fe fe-edit mr-1" /> Edit
+                          </a>
+                        </Menu.Item>
+                        <Menu.Item>
+                          <a href="javascript: void(0);" onClick={() => this.handleDelete(draft)}>
+                            <i className="dropdown-icon fe fe-trash mr-1" /> Delete
+                          </a>
+                        </Menu.Item>
+                      </Menu>
+                    }
+                    placement="bottomRight"
+                  >
                     <a className="nav-link dropdown-toggle pt-sm-0">Actions</a>
                   </Dropdown>
                 </div>
               </div>
               <div className="mb-3">{draft.subtitle}</div>
-              <p className="mb-2">last edited {moment(new Date(draft.updatedAt)).fromNow()}</p>
+              <p className="text-muted mb-2">
+                last edited {moment(new Date(draft.updatedAt)).fromNow()}
+              </p>
             </div>
           </div>
         ))}

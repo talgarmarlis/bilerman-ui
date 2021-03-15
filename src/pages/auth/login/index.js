@@ -25,8 +25,8 @@ const Login = ({ dispatch, user, logo }) => {
 
   return (
     <div>
-      <div className="text-center mb-5">
-        <h1 className="mb-5 px-3">
+      <div className="text-center mb-3">
+        <h1 className="mb-3 px-3">
           <strong>Welcome to {logo}</strong>
         </h1>
         <p>Pluggable enterprise-level application framework.</p>

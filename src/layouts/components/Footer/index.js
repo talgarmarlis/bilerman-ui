@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import style from './style.module.scss'
 
 const Footer = () => {
@@ -8,37 +9,19 @@ const Footer = () => {
         className={`${style.footerNav} list-unstyled d-flex mb-0 flex-wrap justify-content-center`}
       >
         <li>
-          <a href="/#/privacy" onClick={e => e.preventDefault()}>
-            Terms of Use
-          </a>
+          <Link to="/service/terms">Terms of Use</Link>
         </li>
         <li>
-          <a href="/#/privacy" onClick={e => e.preventDefault()}>
-            Compliance
-          </a>
+          <Link to="/service/privacy-policy">Privacy policy</Link>
         </li>
         <li>
-          <a href="/#/privacy" onClick={e => e.preventDefault()}>
-            Support
-          </a>
+          <Link to="/service/about">About</Link>
         </li>
         <li>
-          <a href="/#/privacy" onClick={e => e.preventDefault()}>
-            Contacts
-          </a>
+          <Link to="/service/contact">Contact</Link>
         </li>
       </ul>
-      <div className="text-center">
-        Copyright © 2020-2021 Bilerman Soft |{' '}
-        <a
-          href="/#/privacy"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={e => e.preventDefault()}
-        >
-          Privacy Policy
-        </a>
-      </div>
+      <div className="text-center">Copyright © 2020-2021 Bilerman Inc.</div>
     </div>
   )
 }

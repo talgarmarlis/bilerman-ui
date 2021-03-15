@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button } from 'antd'
 import { articleService } from 'services'
-import ArticleView3 from 'components/blrmn/ArticleView3'
+import ArticleView4 from 'components/blrmn/ArticleView4'
 
-class Latest extends React.Component {
+class Articles extends React.Component {
   state = {
     articles: [],
     loading: false,
@@ -15,7 +15,8 @@ class Latest extends React.Component {
 
   load = (pageNumber, size) => {
     this.setState({ loading: true })
-    articleService.getArticles(pageNumber, size).then(result => {
+    const { author } = this.props
+    articleService.getArticlesByUser(author.id, pageNumber, size).then(result => {
       const page = result.data
       this.setState(prevState => ({
         articles: [...prevState.articles, ...page.content],
@@ -29,13 +30,11 @@ class Latest extends React.Component {
     const { articles, page, loading } = this.state
     return (
       <div>
-        {articles && articles.length > 3 && (
+        {articles && articles.length > 0 && (
           <div className="font-size-24 font-weight-bold text-default mb-2">Latest publications</div>
         )}
         {articles &&
-          articles
-            .slice(3)
-            .map(article => <ArticleView3 article={article} key={`article_${article.id}`} />)}
+          articles.map(article => <ArticleView4 article={article} key={`article_${article.id}`} />)}
         {page && page.totalPages > 1 && page.number + 1 < page.totalPages && (
           <div className="mb-5 pb-2">
             <Button
@@ -52,4 +51,4 @@ class Latest extends React.Component {
   }
 }
 
-export default Latest
+export default Articles

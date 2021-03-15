@@ -1,5 +1,12 @@
 @import 'components/mixins.scss';
 
+.progress {
+  div {
+    vertical-align: top !important;
+  }
+  //top: -10px;
+}
+
 .searchInput {
   width: 100%;
   border: none;
@@ -133,7 +140,7 @@
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    object-fit: cover
+    object-fit: cover;
   }
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import Banner from "./banner";
-import Latest from "./latest";
-import Topics from "./topics";
-import Tags from "./tags";
+import Banner from './banner'
+import Latest from './latest'
+import Topics from './topics'
+import Tags from './tags'
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
         <div className="col-lg-7 col-md-12">
           <Latest />
         </div>
-        <div className="col-lg-5 col-md-12">
+        <div className="d-none col-lg-5 col-md-12">
           <Topics />
           <Tags />
         </div>

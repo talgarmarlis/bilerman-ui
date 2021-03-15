@@ -18,7 +18,7 @@ const mapStateToProps = ({ settings }) => ({
   theme: settings.theme,
 })
 
-const MainLayout = ({
+const EditorLayout = ({
   children,
   isContentMaxWidth,
   isAppMaxWidth,
@@ -52,7 +52,7 @@ const MainLayout = ({
             <TopBar theme={theme} />
           </Layout.Header>
           <Layout.Content style={{ height: '100%', position: 'relative' }}>
-            <div className="cui__utils__content">{children}</div>
+            {children}
           </Layout.Content>
           <Layout.Footer>
             <Footer />
@@ -63,4 +63,4 @@ const MainLayout = ({
   )
 }
 
-export default withRouter(connect(mapStateToProps)(MainLayout))
+export default withRouter(connect(mapStateToProps)(EditorLayout))

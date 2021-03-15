@@ -21,24 +21,23 @@
 }
 
 .containerInner {
-  max-width: 32rem;
+  max-width: 36rem;
   width: 100%;
 }
 
 .topbar {
-  height: rem(64);
+  padding: 0 rem(30);
+  min-height: 64px;
+  height: 64px;
   border-bottom: 1px solid $border;
-  background: $white;
-  margin-bottom: 7vh;
+  color: $text;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
-  padding: rem(28);
-  width: 100%;
 
-  &.topbarGray {
-    background: $gray-1;
+  @media (max-width: $sm-max-width) {
+    padding: 0 rem(16);
   }
 }
 

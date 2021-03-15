@@ -5,7 +5,7 @@
   "scripts": {
     "restart": "BROWSER=yandex react-app-rewired start",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "cp ./src/config.js ./src/config.bak.js && cp ./src/config_prod.js ./src/config.js && react-app-rewired build && mv ./src/config.bak.js ./src/config.js",
     "build-demo": "REACT_APP_AUTHENTICATED=true react-app-rewired build",
     "test": "react-app-rewired test",
     "lint-staged": "lint-staged",

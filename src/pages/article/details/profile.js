@@ -1,7 +1,7 @@
 import React from 'react'
-import Avatar from "components/blrmn/Avatar";
+import Avatar from 'components/blrmn/Avatar'
 
-const Profile = ({author}) => {
+const Profile = ({ author }) => {
   return (
     <div className="card border-0 shadow-none">
       <div className="card-body border-bottom border-red">
@@ -15,8 +15,12 @@ const Profile = ({author}) => {
             <div className="mb-2">{author.email}</div>
             {author.bio && <p className="font-italic">{author.bio}</p>}
           </div>
-          <div>
-            <a href="#" onClick={event => event.preventDefault()} className="btn btn-sm btn-primary">
+          <div className="d-none">
+            <a
+              href="#"
+              onClick={event => event.preventDefault()}
+              className="btn btn-sm btn-primary"
+            >
               Follow
             </a>
           </div>

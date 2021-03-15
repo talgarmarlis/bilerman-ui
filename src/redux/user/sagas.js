@@ -102,6 +102,13 @@ export function* LOAD_CURRENT_ACCOUNT() {
         authorized: true,
       },
     })
+
+    yield put({
+      type: 'clap/LOAD_CLAPS',
+    })
+    yield put({
+      type: 'bookmark/LOAD_BOOKMARKS',
+    })
   }
   yield put({
     type: 'user/SET_STATE',

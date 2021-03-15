@@ -1,17 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import Logo from '../components/Logo'
 import Footer from '../components/Footer'
 import style from './style.module.scss'
+import TopBar from '../Public/topbar'
 
 const mapStateToProps = ({ settings }) => ({
   isGrayTopbar: settings.isGrayTopbar,
   isCardShadow: settings.isCardShadow,
   isSquaredBorders: settings.isSquaredBorders,
   isBorderless: settings.isBorderless,
+  isTopbarFixed: settings.isTopbarFixed,
   authPagesColor: settings.authPagesColor,
   theme: settings.theme,
 })
@@ -22,11 +23,20 @@ const AuthLayout = ({
   isCardShadow,
   isSquaredBorders,
   isBorderless,
+  isTopbarFixed,
   authPagesColor,
   theme,
 }) => {
   return (
     <Layout>
+      <Layout.Header
+        className={classNames('cui__layout__header', {
+          cui__layout__fixedHeader: isTopbarFixed,
+          cui__layout__headerGray: isGrayTopbar,
+        })}
+      >
+        <TopBar theme={theme} />
+      </Layout.Header>
       <Layout.Content>
         <div
           className={classNames(`${style.container}`, {
@@ -41,25 +51,12 @@ const AuthLayout = ({
               authPagesColor === 'image' ? 'url(resources/images/content/photos/7.jpg)' : '',
           }}
         >
-          <div
-            className={classNames(`${style.topbar}`, {
-              [style.topbarGray]: isGrayTopbar,
-            })}
-          >
-            <Logo theme={theme} />
-            <div className="d-none d-sm-block">
-              <Link to="/auth/login" className="font-size-16 kit__utils__link mr-3">
-                Sign in
-              </Link>
-              <Link to="/auth/register" className="font-size-16 kit__utils__link">
-                Sign up
-              </Link>
-            </div>
-          </div>
-          <div className={style.containerInner}>{children}</div>
-          <Footer />
+          <div className={`cui__utils__content ${style.containerInner}`}>{children}</div>
         </div>
       </Layout.Content>
+      <Layout.Footer>
+        <Footer />
+      </Layout.Footer>
     </Layout>
   )
 }
