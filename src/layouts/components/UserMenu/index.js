@@ -98,6 +98,7 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
             shape="circle"
             size="large"
             src={`${config.apiUrl}/users/${user.id}/avatar`}
+            icon={<img src="/resources/images/avatars/avatar-default.png" alt={user.name} />}
           />
         )}
         {!user.avatar && (

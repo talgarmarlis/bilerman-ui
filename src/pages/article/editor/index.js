@@ -110,7 +110,6 @@ class Editor extends React.Component {
 
   render() {
     const { draft, content, loaded, formStatus, progress } = this.state
-    console.log(content)
     return (
       <div>
         <Progress
