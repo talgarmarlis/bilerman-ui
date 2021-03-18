@@ -1,11 +1,14 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const Contact = () => {
   return (
     <div>
       <div className="kit__utils__heading">
         <h5>
-          <span className="mr-3">Contact Bilerman Team</span>
+          <span className="mr-3">
+            <FormattedMessage id="service.about.contact.contactBilerman" />
+          </span>
         </h5>
       </div>
       <div className="card">
@@ -14,7 +17,7 @@ const Contact = () => {
             <p className="mb-2">
               <strong>Email: </strong> bilermaninc@gmail.com
             </p>
-            Do not hesitate to contact us if you have any questions.
+            <FormattedMessage id="service.about.contact.message" />
           </div>
         </div>
       </div>

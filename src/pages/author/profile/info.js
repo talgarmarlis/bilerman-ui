@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import Avatar from 'components/blrmn/Avatar'
 import style from './style.module.scss'
 
@@ -33,19 +34,25 @@ const Info = ({ author }) => {
               <div className={`${style.status} bg-gray-3 d-none d-lg-block`} />
               <div className="d-flex flex-nowrap align-items-center flex-column mr-auto">
                 <div className="text-center">
-                  <div className="font-size-18">Total articles</div>
+                  <div className="font-size-18">
+                    <FormattedMessage id="author.profile.info.totalArticles" />
+                  </div>
                   <div className="font-weight-bold font-size-24 text-primary mb-1">27</div>
                 </div>
               </div>
               <div className="d-flex flex-nowrap align-items-center flex-column mr-auto">
                 <div className="text-center">
-                  <div className="font-size-18">Total contribution</div>
+                  <div className="font-size-18">
+                    <FormattedMessage id="author.profile.info.totalContribution" />
+                  </div>
                   <div className="font-weight-bold font-size-24 text-primary mb-1">31</div>
                 </div>
               </div>
               <div className="d-flex flex-nowrap align-items-center flex-column">
                 <div className="text-center">
-                  <div className="font-size-18">Followers</div>
+                  <div className="font-size-18">
+                    <FormattedMessage id="author.profile.info.followers" />
+                  </div>
                   <div className="font-weight-bold font-size-24 text-primary mb-1">19</div>
                 </div>
               </div>

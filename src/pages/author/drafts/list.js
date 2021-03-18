@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Dropdown, Menu, Modal, Pagination } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import moment from 'moment'
@@ -64,7 +65,10 @@ class DraftList extends Component {
 
     return (
       <>
-        {drafts.length === 0 && <div className="text-center mb-3 py-4 bg-light rounded">Empty</div>}
+        {drafts.length === 0 &&
+        <div className="text-center mb-3 py-4 bg-light rounded">
+          <FormattedMessage id="author.drafts.list.empty" />
+        </div>}
         {drafts.map(draft => (
           <div className="d-flex flex-nowrap align-items-start pt-4" key={draft.id}>
             <div className="flex-grow-1 border-bottom">
@@ -83,19 +87,23 @@ class DraftList extends Component {
                       <Menu>
                         <Menu.Item>
                           <a href={`/#/article/editor/${draft.id}`}>
-                            <i className="dropdown-icon fe fe-edit mr-1" /> Edit
+                            <i className="dropdown-icon fe fe-edit mr-1" />
+                            <FormattedMessage id="author.drafts.list.edit" />
                           </a>
                         </Menu.Item>
                         <Menu.Item>
                           <a href="javascript: void(0);" onClick={() => this.handleDelete(draft)}>
-                            <i className="dropdown-icon fe fe-trash mr-1" /> Delete
+                            <i className="dropdown-icon fe fe-trash mr-1" />
+                            <FormattedMessage id="author.drafts.list.delete" />
                           </a>
                         </Menu.Item>
                       </Menu>
                     }
                     placement="bottomRight"
                   >
-                    <a className="nav-link dropdown-toggle pt-sm-0">Actions</a>
+                    <a className="nav-link dropdown-toggle pt-sm-0">
+                      <FormattedMessage id="author.drafts.list.actions" />
+                    </a>
                   </Dropdown>
                 </div>
               </div>

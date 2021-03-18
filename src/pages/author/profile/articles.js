@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from 'antd'
 import { articleService } from 'services'
 import ArticleView4 from 'components/blrmn/ArticleView4'
+import {FormattedMessage} from "react-intl";
 
 class Articles extends React.Component {
   state = {
@@ -31,7 +32,9 @@ class Articles extends React.Component {
     return (
       <div>
         {articles && articles.length > 0 && (
-          <div className="font-size-24 font-weight-bold text-default mb-2">Latest publications</div>
+          <div className="font-size-24 font-weight-bold text-default mb-2">
+            <FormattedMessage id="author.profile.articles.latestPublications" />
+          </div>
         )}
         {articles &&
           articles.map(article => <ArticleView4 article={article} key={`article_${article.id}`} />)}
@@ -42,7 +45,7 @@ class Articles extends React.Component {
               onClick={() => this.load(page.number + 1)}
               loading={loading}
             >
-              Load More
+              <FormattedMessage id="author.profile.articles.loadMore" />
             </Button>
           </div>
         )}

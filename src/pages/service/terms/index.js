@@ -1,41 +1,35 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const Terms = () => {
   return (
     <div>
       <div className="kit__utils__heading">
         <h5>
-          <span className="mr-3">Bilerman Terms of Service</span>
+          <span className="mr-3">
+            <FormattedMessage id="service.terms.index.termsOfService" />
+          </span>
         </h5>
       </div>
       <div className="card">
         <div className="card-body">
           <div className="alert alert-light" role="alert">
             <p className="mb-2">
-              <strong>Effective: March 15, 2021!</strong>
+              <strong>
+                <FormattedMessage id="service.privacyPolicy.index.date" />
+              </strong>
             </p>
-            Thanks for using Bilerman. Our mission is to deepen people’s understanding of the world
-            and spread ideas that matter.
+            <FormattedMessage id="service.privacyPolicy.index.message1" />
           </div>
           <br />
           <p>
-            These Terms of Service (“Terms”) apply to your access to and use of the websites, mobile
-            applications and other online products and services (collectively, the “Services”)
-            provided by A Bilerman Corporation (“Bilerman” or “we”). By clicking your consent (e.g.
-            “Continue,” “Sign-in,” or “Sign-up,”) or by using our Services, you agree to these
-            Terms, including the mandatory arbitration provision and class action waiver in the
-            Resolving Disputes; Binding Arbitration Section.
+            <FormattedMessage id="service.terms.index.message1" />
           </p>
           <p>
-            Our Privacy Policy explains how we collect and use your information while our Rules
-            outline your responsibilities when using our Services. By using our Services, you’re
-            agreeing to be bound by these Terms and our Rules. Please see our Privacy Policy for
-            information about how we collect, use, share and otherwise process information about
-            you.
+            <FormattedMessage id="service.terms.index.message2" />
           </p>
           <p>
-            If you have any questions about these Terms or our Services, please contact us at
-            bilermaninc@gmail.com.
+            <FormattedMessage id="service.terms.index.message3" />
           </p>
         </div>
       </div>

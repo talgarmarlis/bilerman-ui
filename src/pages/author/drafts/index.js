@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { Tabs } from 'antd'
 import DraftList from './list'
@@ -20,13 +21,15 @@ const Drafts = ({ user }) => {
         <div className="d-flex">
           <div className="d-flex flex-column justify-content-center mr-auto">
             <h5>
-              <span className="mr-3">Your drafts</span>
+              <span className="mr-3">
+                <FormattedMessage id="author.drafts.index.yourDrafts" />
+              </span>
             </h5>
           </div>
           <div className="d-flex flex-column justify-content-center">
             <a href="#/article/editor" className="btn btn-outline-primary mb-1">
               <i className="fe fe-feather mr-2" />
-              Write a story
+              <FormattedMessage id="author.drafts.index.writeStory" />
             </a>
           </div>
         </div>
@@ -40,7 +43,7 @@ const Drafts = ({ user }) => {
                   tab={
                     <span>
                       <i className="fe fe-layers mr-1" />
-                      Drafts
+                      <FormattedMessage id="author.drafts.index.drafts" />
                     </span>
                   }
                   key="1"
@@ -49,7 +52,7 @@ const Drafts = ({ user }) => {
                   tab={
                     <span>
                       <i className="fe fe-grid mr-1" />
-                      Published
+                      <FormattedMessage id="author.drafts.index.published" />
                     </span>
                   }
                   key="2"

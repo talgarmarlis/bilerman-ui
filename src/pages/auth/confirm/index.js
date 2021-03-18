@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { injectIntl } from 'react-intl'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 import { authService } from '../../../services'
@@ -37,20 +37,26 @@ class Confirm extends Component {
                 <div>
                   <div className={`card ${style.container}`}>
                     <div className="text-dark text-center font-size-24 mb-4">
-                      <strong>Hello {user.name},</strong>
+                      <strong><FormattedMessage id="auth.confirm.index.hello" /> {user.name},</strong>
                     </div>
                     <div className="text-center">
                       <div className="font-size-18 text-dark mb-4">
-                        <strong>Thank you for signing up with Bilerman!</strong>
+                        <strong>
+                          <FormattedMessage id="auth.confirm.index.thanks" />
+                        </strong>
                       </div>
                       <div className="font-size-18 text-dark mb-4">
-                        Your email account have been verified.
+                        <FormattedMessage id="auth.confirm.index.emailVerified" />
                       </div>
-                      <p>Please sign in to continue.</p>
+                      <p>
+                        <FormattedMessage id="auth.confirm.index.signInContinue" />
+                      </p>
                     </div>
                     <Link to="/auth/login">
                       <Button type="primary" size="large" className="text-center w-100">
-                        <strong>Sign in</strong>
+                        <strong>
+                          <FormattedMessage id="auth.confirm.index.signIn" />
+                        </strong>
                       </Button>
                     </Link>
                   </div>
@@ -60,23 +66,25 @@ class Confirm extends Component {
                 <div>
                   <div className={`card ${style.container}`}>
                     <div className="text-dark text-center font-size-24 mb-4">
-                      <strong>Oops!</strong>
+                      <strong><FormattedMessage id="auth.confirm.index.oops" /></strong>
                     </div>
                     <div className="text-center">
                       <div className="font-size-18 text-dark mb-4">
-                        <strong>The email address was not verified.</strong>
+                        <strong>
+                          <FormattedMessage id="auth.confirm.index.emailNotVerified" />
+                        </strong>
                       </div>
                       <div className="font-size-18 text-dark mb-4">
-                        Please, see the below message to know what went wrong.
+                        <FormattedMessage id="auth.confirm.index.message" />
                       </div>
                       <p>{message}</p>
                     </div>
                   </div>
                   <div className="text-center pt-2 mb-auto">
                     <Link to="/auth/register" className="kit__utils__link font-size-16">
-                      Sign up
+                      <FormattedMessage id="auth.confirm.index.signUp" />
                     </Link>
-                    <span className="mr-2"> to continue.</span>
+                    <span className="mr-2"> <FormattedMessage id="auth.confirm.index.toContinue" /></span>
                   </div>
                 </div>
               )}

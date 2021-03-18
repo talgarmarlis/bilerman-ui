@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import {Button, Form, Input, Upload} from "antd";
 import {MailOutlined, UploadOutlined, UserOutlined} from "@ant-design/icons";
 import General15 from "../../../components/kit/widgets/General/15";
@@ -10,7 +11,9 @@ const Comments = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <h5 className="text-dark mb-4">Leave a comment</h5>
+        <h5 className="text-dark mb-4">
+          <FormattedMessage id="article.details.comment.leaveComment" />
+        </h5>
         <Form className="login-form">
           <Form.Item name="userName">
             <Input

@@ -1,11 +1,14 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
 const About = () => {
   return (
     <div>
       <div className="kit__utils__heading">
         <h5>
-          <span className="mr-3">About Bilerman</span>
+          <span className="mr-3">
+            <FormattedMessage id="service.about.index.aboutBilerman" />
+          </span>
         </h5>
       </div>
       <div className="card">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import { Input, Button, Form } from 'antd'
 import { Link } from 'react-router-dom'
@@ -11,7 +12,7 @@ const mapStateToProps = ({ user, settings, dispatch }) => ({
   logo: settings.logo,
 })
 
-const Login = ({ dispatch, user, logo }) => {
+const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
   const onFinish = values => {
     dispatch({
       type: 'user/LOGIN',
@@ -27,13 +28,14 @@ const Login = ({ dispatch, user, logo }) => {
     <div>
       <div className="text-center mb-3">
         <h1 className="mb-3 px-3">
-          <strong>Welcome to {logo}</strong>
+          <strong><FormattedMessage id="auth.login.index.welcome" /> {logo}</strong>
         </h1>
-        <p>Pluggable enterprise-level application framework.</p>
       </div>
       <div className={`card ${style.container}`}>
         <div className="text-dark font-size-24 mb-3">
-          <strong>Sign in to your account</strong>
+          <strong>
+            <FormattedMessage id="auth.login.index.signIn" />
+          </strong>
         </div>
         <Form
           layout="vertical"
@@ -44,15 +46,15 @@ const Login = ({ dispatch, user, logo }) => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please input your e-mail address' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.login.index.inputEmail' }) }]}
           >
-            <Input size="large" placeholder="Email" />
+            <Input size="large" placeholder={formatMessage({ id: 'auth.login.index.email' })} />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: 'Please input your password' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.login.index.inputPassword' }) }]}
           >
-            <Input size="large" type="password" placeholder="Password" />
+            <Input size="large" type="password" placeholder={formatMessage({ id: 'auth.login.index.password' })} />
           </Form.Item>
           <Button
             type="primary"
@@ -61,21 +63,23 @@ const Login = ({ dispatch, user, logo }) => {
             htmlType="submit"
             loading={user.loading}
           >
-            <strong>Sign in</strong>
+            <strong><FormattedMessage id="auth.confirm.index.signIn" /></strong>
           </Button>
         </Form>
         <Link to="/auth/password/forgot" className="kit__utils__link font-size-16">
-          Forgot Password?
+          <FormattedMessage id="auth.login.index.forgotPassword" />
         </Link>
       </div>
       <div className="text-center pt-2 mb-auto">
-        <span className="mr-2">Don&#39;t have an account?</span>
+        <span className="mr-2">
+          <FormattedMessage id="auth.login.index.dontHaveAccount" />
+        </span>
         <Link to="/auth/register" className="kit__utils__link font-size-16">
-          Sign up
+          <FormattedMessage id="auth.login.index.signUp" />
         </Link>
       </div>
     </div>
   )
 }
 
-export default connect(mapStateToProps)(Login)
+export default injectIntl(connect(mapStateToProps)(Login))
