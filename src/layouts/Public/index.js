@@ -52,7 +52,7 @@ const MainLayout = ({
             <TopBar theme={theme} />
           </Layout.Header>
           <Layout.Content style={{ height: '100%', position: 'relative' }}>
-            <div className="cui__utils__content">{children}</div>
+            <div className="container-xl mb-4 mt-4">{children}</div>
           </Layout.Content>
           <Layout.Footer>
             <Footer />

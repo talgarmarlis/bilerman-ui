@@ -4,19 +4,18 @@
   background-size: cover;
   background-position: center center;
   border-radius: 5px;
-  height: 234px;
 }
 
 .overlay {
   z-index: 10;
   opacity: 1;
-  position: absolute;
   border-radius: 5px;
+  height: 210px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba($blrmn-1, 0.7);
+  background-color: rgba($default, 0.7);
 }
 
 .item {

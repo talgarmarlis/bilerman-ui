@@ -1,19 +1,10 @@
 @import 'components/mixins.scss';
 
 .topbar {
-  padding: 0 rem(30);
   min-height: 64px;
   height: 64px;
   border-bottom: 1px solid $border;
   color: $text;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-
-  @media (max-width: $sm-max-width) {
-    padding: 0 rem(16);
-  }
 }
 
 // dark theme

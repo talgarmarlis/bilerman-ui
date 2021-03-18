@@ -12,60 +12,67 @@ import style from './style.module.scss'
 const ArticleView3 = ({ article }) => {
   return (
     <>
-      <div className="card bg-light border-0 shadow-none">
+      <div className="card card-borderless bg-light">
         <div className="card-body">
-          <div className="d-flex flex-nowrap align-items-start">
-            <div className="flex-grow-1 mr-3">
-              <div>
-                <div className="d-flex flex-wrap mb-1">
+          <div className="row d-flex flex-row-reverse">
+            <div className="col-xs-12 col-sm-4">
+              {article.imageId &&
+              (
+                <di>
+                  <div
+                    className={`${style.head} d-flex flex-column`}
+                    style={{ backgroundImage: `url(${config.apiUrl}/images/${article.imageId})`}}
+                  />
+                  <div className="mb-3 d-sm-none" />
+                </di>
+              )
+              }
+            </div>
+            <div className="col-xs-12 col-sm-8 d-flex">
+              <div className="d-flex flex-column flex-fill">
+                <div className="d-flex mb-2">
                   <div className="mr-auto">
                     <div className={style.item}>
                       <div className="mr-2"><Avatar author={article.user} size={27} /></div>
-                      <Link to={`/author/profile/${article.user.id}`}>
-                        <div className="font-weight-bold text-default mr-2">{`${article.user.name} ${article.user.surname}`}</div>
-                      </Link>
-                      <div className="text-muted">{`|  ${moment( new Date(article.createdAt)).fromNow()}`}</div>
+                      <div className="d-flex flex-wrap">
+                        <div className="mr-2">
+                          <Link to={`/author/profile/${article.user.id}`}>
+                            <div className="font-weight-bold text-default">{`${article.user.name} ${article.user.surname}`}</div>
+                          </Link>
+                        </div>
+                        <div className="text-muted">{` ${moment( new Date(article.createdAt)).fromNow()}`}</div>
+                      </div>
                     </div>
                   </div>
-                  <div className="nav-item dropdown">
+                  <div className="ml-2 nav-item dropdown">
                     <Bookmark articleId={article.id} type="primary" />
                   </div>
                 </div>
-                <Link to={`/article/details/${article.id}`}>
-                  <div className="font-weight-bold font-size-21 text-primary mb-2">
-                    {article.title}
-                  </div>
-                </Link>
-                <Link to={`/article/details/${article.id}`}>
-                  <div
-                    className="mb-3"
-                    dangerouslySetInnerHTML={{ __html: article.subtitle.substr(0, 150) }}
-                  />
-                </Link>
-                <div className="d-flex flex-wrap justify-content-start align-items-start">
-                  <span className="mr-4">
+                <div className="mb-2">
+                  <Link to={`/article/details/${article.id}`}>
+                    <h5 className="text-primary font-weight-bold">
+                      {article.title}
+                    </h5>
+                  </Link>
+                </div>
+                <div className="mb-2">
+                  <Link to={`/article/details/${article.id}`}>
+                    <div dangerouslySetInnerHTML={{ __html: article.subtitle.substr(0, 150).concat('. .') }} />
+                  </Link>
+                </div>
+                <div className="mt-auto d-flex">
+                  <span className="mr-3">
                     <ViewCount count={article.views} type="primary" />
                   </span>
-                  <span className="mr-4">
+                  <span className="mr-3">
                     <CommentCount count={article.comments} type="primary" />
                   </span>
-                  <span className="mr-4">
+                  <span>
                     <Clap article={article} type="primary" />
                   </span>
                 </div>
               </div>
             </div>
-            {article.imageId && (
-              <div>
-                <div className={style.itemContent}>
-                  <img src={`${config.apiUrl}/images/${article.imageId}`} alt={article.title} />
-                </div>
-              </div>
-            )
-            // <div className="kit__utils__avatar kit__utils__avatar--size110 flex-shrink-0 align-self-start">
-            //   <img src={`${config.apiUrl}/images/${article.imageId}`} alt={article.title} />
-            // </div>
-            }
           </div>
         </div>
       </div>
