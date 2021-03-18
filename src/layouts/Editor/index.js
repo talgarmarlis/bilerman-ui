@@ -52,7 +52,7 @@ const EditorLayout = ({
             <TopBar theme={theme} />
           </Layout.Header>
           <Layout.Content style={{ height: '100%', position: 'relative' }}>
-            {children}
+            <div className="container-xl">{children}</div>
           </Layout.Content>
           <Layout.Footer>
             <Footer />

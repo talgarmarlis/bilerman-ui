@@ -11,58 +11,55 @@ import style from './style.module.scss'
 const ArticleView4 = ({ article }) => {
   return (
     <>
-      <div className="card bg-light border-0 shadow-none">
+      <div className="card card-borderless bg-light">
         <div className="card-body">
-          <div className="d-flex flex-nowrap align-items-start">
-            <div className="flex-grow-1 mr-3 height-250 flex-column d-flex">
-              <div className="d-flex flex-wrap mb-1">
-                <div className="mr-auto">
-                  <div className={style.item}>
-                    <div className="text-muted">
-                      {moment(new Date(article.createdAt)).fromNow()}
-                    </div>
-                  </div>
-                </div>
-                <div className="nav-item dropdown">
-                  <Bookmark articleId={article.id} type="primary" />
-                </div>
-              </div>
-              <div className="mb-auto">
-                <Link to={`/article/details/${article.id}`}>
-                  <div className="font-weight-bold font-size-21 text-primary mb-2">
-                    {article.title}
-                  </div>
-                </Link>
-                <Link to={`/article/details/${article.id}`}>
+          <div className="row d-flex flex-row-reverse">
+            <div className="col-xs-12 col-sm-4">
+              {article.imageId &&
+              (
+                <di>
                   <div
-                    className="mb-3"
-                    dangerouslySetInnerHTML={{ __html: article.subtitle.substr(0, 150) }}
+                    className={`${style.head} d-flex flex-column`}
+                    style={{ backgroundImage: `url(${config.apiUrl}/images/${article.imageId})`}}
                   />
-                </Link>
-              </div>
-              <div className="d-flex flex-wrap align-items-start">
-                <span className="mr-4">
-                  <ViewCount count={article.views} type="primary" />
-                </span>
-                <span className="mr-4">
-                  <CommentCount count={article.comments} type="primary" />
-                </span>
-                <span className="mr-4">
-                  <Clap article={article} type="primary" />
-                </span>
+                  <div className="mb-3 d-sm-none" />
+                </di>
+              )
+              }
+            </div>
+            <div className="col-xs-12 col-sm-8 d-flex">
+              <div className="d-flex flex-column flex-fill">
+                <div className="d-flex mb-2">
+                  <div className="mr-auto text-muted">{` ${moment( new Date(article.createdAt)).fromNow()}`}</div>
+                  <div className="ml-2 nav-item dropdown">
+                    <Bookmark articleId={article.id} type="primary" />
+                  </div>
+                </div>
+                <div className="mb-2">
+                  <Link to={`/article/details/${article.id}`}>
+                    <h5 className="text-primary font-weight-bold">
+                      {article.title}
+                    </h5>
+                  </Link>
+                </div>
+                <div className="mb-2">
+                  <Link to={`/article/details/${article.id}`}>
+                    <div dangerouslySetInnerHTML={{ __html: article.subtitle.substr(0, 150).concat('. .') }} />
+                  </Link>
+                </div>
+                <div className="mt-auto d-flex">
+                  <span className="mr-3">
+                    <ViewCount count={article.views} type="primary" />
+                  </span>
+                  <span className="mr-3">
+                    <CommentCount count={article.comments} type="primary" />
+                  </span>
+                  <span>
+                    <Clap article={article} type="primary" />
+                  </span>
+                </div>
               </div>
             </div>
-            {article.imageId && (
-              <div>
-                <div className={style.itemContent}>
-                  <img src={`${config.apiUrl}/images/${article.imageId}`} alt={article.title} />
-                </div>
-              </div>
-            )
-            // <div className="kit__utils__avatar kit__utils__avatar--size110 flex-shrink-0 align-self-start">
-            //   <img src={`${config.apiUrl}/images/${article.imageId}`} alt={article.title} />
-            // </div>
-            }
           </div>
         </div>
       </div>

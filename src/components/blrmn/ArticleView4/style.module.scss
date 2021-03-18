@@ -1,5 +1,12 @@
 @import 'components/mixins.scss';
 
+.head {
+  background-size: cover;
+  background-position: center center;
+  border-radius: 5px;
+  height: 175px;
+}
+
 .item {
   display: flex;
   flex-direction: row;
@@ -17,8 +24,8 @@
   overflow: hidden;
   position: relative;
   background-color: transparent;
-  width: rem(250);
-  height: rem(250);
+  width: rem(150);
+  height: rem(150);
 
   &:hover {
     .itemControl {
@@ -33,6 +40,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: auto;
-    height: rem(284);
+    height: rem(184);
   }
 }

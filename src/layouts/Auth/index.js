@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
 import Footer from '../components/Footer'
 import style from './style.module.scss'
-import TopBar from '../Public/topbar'
+import TopBar from './topbar'
 
 const mapStateToProps = ({ settings }) => ({
   isGrayTopbar: settings.isGrayTopbar,
@@ -51,7 +51,7 @@ const AuthLayout = ({
               authPagesColor === 'image' ? 'url(resources/images/content/photos/7.jpg)' : '',
           }}
         >
-          <div className={`cui__utils__content ${style.containerInner}`}>{children}</div>
+          <div className={`container-xl mb-4 mt-4 ${style.containerInner}`}>{children}</div>
         </div>
       </Layout.Content>
       <Layout.Footer>
