@@ -1,19 +1,21 @@
 import React from 'react'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { Input, Button, Form } from 'antd'
 import { Link } from 'react-router-dom'
 import style from '../style.module.scss'
 
-const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
+const RegistrationForm = ({ loading, onFinish, onFinishFailed, intl: { formatMessage } }) => {
   return (
     <div>
       <div className={`card ${style.container}`}>
         <div className="text-dark font-size-24 mb-4">
-          <strong>Create your account</strong>
+          <strong>
+            <FormattedMessage id="auth.register.form.createAccount" />
+          </strong>
         </div>
         <div className="mb-4">
           <p>
-            And start spending more time on your projects and less time managing your
-            infrastructure.
+            <FormattedMessage id="auth.register.form.info" />
           </p>
         </div>
         <Form
@@ -25,35 +27,35 @@ const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
         >
           <Form.Item
             name="name"
-            rules={[{ required: true, message: 'Please input your first name' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.register.form.inputFirstName' }) }]}
           >
-            <Input size="large" placeholder="First Name" />
+            <Input size="large" placeholder={formatMessage({ id: 'auth.register.form.firstName' })} />
           </Form.Item>
           <Form.Item
             name="surname"
-            rules={[{ required: true, message: 'Please input your last name' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.register.form.inputLastName' }) }]}
           >
-            <Input size="large" placeholder="Last Name" />
+            <Input size="large" placeholder={formatMessage({ id: 'auth.register.form.lastName' })} />
           </Form.Item>
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please input your e-mail address' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.register.form.inputEmail' }) }]}
           >
-            <Input type="email" size="large" placeholder="Email Address" />
+            <Input type="email" size="large" placeholder={formatMessage({ id: 'auth.register.form.email' })} />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: 'Please create a password' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.register.form.createPassword' }) }]}
             hasFeedback
           >
-            <Input type="password" size="large" placeholder="Password" />
+            <Input type="password" size="large" placeholder={formatMessage({ id: 'auth.register.form.password' })} />
           </Form.Item>
           <Form.Item
             name="confirm"
             dependencies={['password']}
             hasFeedback
             rules={[
-              { required: true, message: 'Please confirm your password' },
+              { required: true, message: formatMessage({ id: 'auth.register.form.confirmPassword' }) },
               ({ getFieldValue }) => ({
                 validator(rule, value) {
                   if (!value || getFieldValue('password') === value) {
@@ -65,7 +67,7 @@ const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
               }),
             ]}
           >
-            <Input type="password" size="large" placeholder="Password Confirmation" />
+            <Input type="password" size="large" placeholder={formatMessage({ id: 'auth.register.form.passwordConfirm' })} />
           </Form.Item>
           <Button
             type="primary"
@@ -74,7 +76,7 @@ const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
             className="text-center w-100"
             loading={loading}
           >
-            <strong>Sign up</strong>
+            <strong><FormattedMessage id="auth.register.form.signUp" /></strong>
           </Button>
         </Form>
         <div>
@@ -89,13 +91,15 @@ const RegistrationForm = ({ loading, onFinish, onFinishFailed }) => {
         </div>
       </div>
       <div className="text-center pt-2 mb-auto">
-        <span className="mr-2">Already have an account?</span>
+        <span className="mr-2">
+          <FormattedMessage id="auth.register.form.haveAccount" />
+        </span>
         <Link to="/auth/login" className="kit__utils__link font-size-16">
-          Sign in
+          <FormattedMessage id="auth.confirm.index.signIn" />
         </Link>
       </div>
     </div>
   )
 }
 
-export default RegistrationForm
+export default injectIntl(RegistrationForm)

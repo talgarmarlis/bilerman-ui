@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Button, Form, notification } from 'antd'
 import { Link } from 'react-router-dom'
 import { authService } from 'services'
@@ -21,16 +22,20 @@ const RegistrationFeedback = ({ user }) => {
     <div>
       <div className={`card ${style.container}`}>
         <div className="text-dark text-center font-size-24 mb-4">
-          <strong>Hello {user.name},</strong>
+          <strong><FormattedMessage id="auth.confirm.index.hello" /> {user.name},</strong>
         </div>
         <div className="text-center">
           <div className="font-size-18 text-dark mb-4">
-            <strong>Thank you for signing up with Bilerman!</strong>
+            <strong>
+              <FormattedMessage id="auth.register.feedback.thankYou" />
+            </strong>
           </div>
           <div className="font-size-18 text-dark mb-4">
-            Check your email and follow the instructions to activate your account.
+            <FormattedMessage id="auth.register.feedback.checkYourEmail" />
           </div>
-          <p>Resend your confirmation email if you did not receive one.</p>
+          <p>
+            <FormattedMessage id="auth.register.feedback.resend" />
+          </p>
         </div>
         <Form
           layout="vertical"
@@ -40,14 +45,16 @@ const RegistrationFeedback = ({ user }) => {
           className="mb-4"
         >
           <Button type="primary" htmlType="submit" size="large" className="text-center w-100">
-            <strong>Resend</strong>
+            <strong> <FormattedMessage id="auth.register.feedback.resendButton" /></strong>
           </Button>
         </Form>
       </div>
       <div className="text-center pt-2 mb-auto">
-        <span className="mr-2">Already confirmed?</span>
+        <span className="mr-2">
+          <FormattedMessage id="auth.register.feedback.confirm" />
+        </span>
         <Link to="/auth/login" className="kit__utils__link font-size-16">
-          Sign in
+          <FormattedMessage id="auth.confirm.index.signIn" />
         </Link>
       </div>
     </div>

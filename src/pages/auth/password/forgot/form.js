@@ -1,14 +1,15 @@
 import React from 'react'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { Input, Button, Form } from 'antd'
 import { Link } from 'react-router-dom'
 import style from '../../style.module.scss'
 
-const PasswordForgotForm = ({ loading, onFinish, onFinishFailed }) => {
+const PasswordForgotForm = ({ loading, onFinish, onFinishFailed, intl: { formatMessage } }) => {
   return (
     <div>
       <div className={`card ${style.container}`}>
         <div className="text-dark font-size-24 mb-4">
-          <strong>Reset Password</strong>
+          <strong><FormattedMessage id="auth.password.forgot.feedback.resetPassword" /></strong>
         </div>
         <Form
           layout="vertical"
@@ -19,9 +20,9 @@ const PasswordForgotForm = ({ loading, onFinish, onFinishFailed }) => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please input your e-mail address' }]}
+            rules={[{ required: true, message: formatMessage({ id: 'auth.register.form.inputEmail' }) }]}
           >
-            <Input size="large" placeholder="Email Address" />
+            <Input size="large" placeholder={formatMessage({ id: 'auth.register.form.email' })} />
           </Form.Item>
           <Button
             type="primary"
@@ -30,16 +31,16 @@ const PasswordForgotForm = ({ loading, onFinish, onFinishFailed }) => {
             className="text-center w-100"
             loading={loading}
           >
-            <strong>Reset my password</strong>
+            <strong><FormattedMessage id="auth.password.forgot.feedback.resetMyPassword" /></strong>
           </Button>
         </Form>
         <Link to="/auth/login" className="kit__utils__link font-size-16">
           <i className="fe fe-arrow-left mr-1 align-middle" />
-          Go to Sign in
+          <FormattedMessage id="auth.password.forgot.feedback.goToSignIn" />
         </Link>
       </div>
     </div>
   )
 }
 
-export default PasswordForgotForm
+export default injectIntl(PasswordForgotForm)
