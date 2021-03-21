@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Radio, Tooltip, Form, Input, Upload, Select, Button } from 'antd'
 import { CameraOutlined, CloseOutlined, DeleteOutlined } from '@ant-design/icons'
@@ -68,7 +69,7 @@ class PublicationForm extends React.Component {
   }
 
   render() {
-    const { enabled, toggleForm } = this.props
+    const { enabled, toggleForm, intl: { formatMessage } } = this.props
     const { tags, title, subtitle, languageId, loading, imageId } = this.state
 
     return (
@@ -90,7 +91,9 @@ class PublicationForm extends React.Component {
                   onClick={toggleForm}
                 />
                 <h5>
-                  <strong>Publish your draft</strong>
+                  <strong>
+                    <FormattedMessage id="article.editor.form.publishDraft" />
+                  </strong>
                 </h5>
                 <div className="cui__utils__line" style={{ marginTop: 25, marginBottom: 30 }} />
                 <Form
@@ -102,7 +105,7 @@ class PublicationForm extends React.Component {
                 >
                   <div className={style.cui__sidebar__type}>
                     <div className={style.cui__sidebar__type__title}>
-                      <span>Your article preview</span>
+                      <span><FormattedMessage id="article.editor.form.preview" /></span>
                     </div>
                     {imageId && (
                       <div key={imageId} className={style.item}>
@@ -130,42 +133,44 @@ class PublicationForm extends React.Component {
                         <p className="ant-upload-drag-icon">
                           <CameraOutlined />
                         </p>
-                        <p className="ant-upload-text">Pick or drag your preview image</p>
+                        <p className="ant-upload-text">
+                          <FormattedMessage id="article.editor.form.image" />
+                        </p>
                         <p className="ant-upload-hint">
-                          Include a high-quality image in your story to make it more inviting to
-                          readers
+                          <FormattedMessage id="article.editor.form.imageQuality" />
                         </p>
                       </Dragger>
                     )}
                     <Form.Item
                       name="title"
                       initialValue={title}
-                      rules={[{ required: true, message: 'Please input your title' }]}
+                      rules={[{ required: true, message: formatMessage({ id: 'article.editor.form.inputTitle' }) }]}
                     >
-                      <Input placeholder="Title" />
+                      <Input placeholder={formatMessage({ id: 'article.editor.form.title' })} />
                     </Form.Item>
                     <Form.Item
                       name="subtitle"
                       initialValue={subtitle}
-                      rules={[{ required: true, message: 'Please input your subtitle' }]}
+                      rules={[{ required: true, message: formatMessage({ id: 'article.editor.form.inputSubtitle' }) }]}
                     >
-                      <TextArea placeholder="Subtitle" />
+                      <TextArea placeholder={formatMessage({ id: 'article.editor.form.subtitle' })} />
                     </Form.Item>
-                    <strong>Note: </strong>
+                    <strong><FormattedMessage id="article.editor.form.note" /> </strong>
                     <span className="text-muted">
-                      Changes here will affect how your story appears in public places like
-                      Bilerman’s homepage — not the story itself
+                      <FormattedMessage id="article.editor.form.noteMessage" />
                     </span>
                   </div>
                   <div className={style.cui__sidebar__type}>
                     <div className={style.cui__sidebar__type__title}>
-                      <span>Content language</span>
+                      <span>
+                        <FormattedMessage id="article.editor.form.language" />
+                      </span>
                     </div>
                     <Form.Item
                       className="mb-2"
                       name="languageId"
                       initialValue={languageId}
-                      rules={[{ required: true, message: 'Please, select article language' }]}
+                      rules={[{ required: true, message: formatMessage({ id: 'article.editor.form.selectLanguage' }) }]}
                     >
                       <Radio.Group>
                         <div className="row">
@@ -199,10 +204,10 @@ class PublicationForm extends React.Component {
                   </div>
                   <div className={style.cui__sidebar__type}>
                     <div className={style.cui__sidebar__type__title}>
-                      <span>Tags</span>
+                      <span><FormattedMessage id="article.editor.form.tag" /></span>
                     </div>
                     <span className="text-muted">
-                      Add or change tags (up to 5) so readers know what your story is about
+                      <FormattedMessage id="article.editor.form.tagContent" />
                     </span>
                     <Form.Item
                       className="mb-2"
@@ -226,7 +231,7 @@ class PublicationForm extends React.Component {
                       <Select
                         mode="tags"
                         size="default"
-                        placeholder="Add a tag"
+                        placeholder={formatMessage({ id: 'article.editor.form.addTag' })}
                         style={{ width: '100%' }}
                       />
                     </Form.Item>
@@ -234,7 +239,7 @@ class PublicationForm extends React.Component {
                   <div className="border-top pt-4">
                     <Form.Item>
                       <Button type="primary" htmlType="submit" loading={loading}>
-                        Publish
+                        <FormattedMessage id="article.editor.form.publish" />
                       </Button>
                     </Form.Item>
                   </div>
@@ -256,7 +261,7 @@ class PublicationForm extends React.Component {
             className={style.cui__sidebar__toggleButton}
           >
             <i className="icmn icmn-earth mr-2" />
-            <span>Publish</span>
+            <span><FormattedMessage id="article.editor.form.publish" /></span>
           </a>
         </Tooltip>
       </div>
@@ -264,4 +269,4 @@ class PublicationForm extends React.Component {
   }
 }
 
-export default PublicationForm
+export default injectIntl(PublicationForm)

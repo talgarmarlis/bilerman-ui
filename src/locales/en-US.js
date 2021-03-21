@@ -108,7 +108,25 @@ const messages = {
   'auth.password.forgot.feedback.resetPassword': 'Reset Password',
   'auth.password.forgot.feedback.resetMyPassword': 'Reset my password',
   'auth.password.forgot.feedback.goToSignIn': 'Go to Sign in',
-
+  'article.details.relatedArticles.relatedPosts': 'Related Posts',
+  'article.details.profile.follow': 'Follow',
+  'article.editor.form.publishDraft': 'Publish your draft',
+  'article.editor.form.preview': 'Your article preview',
+  'article.editor.form.image': 'Pick or drag your preview image',
+  'article.editor.form.imageQuality': 'Include a high-quality image in your story to make it more inviting to readers',
+  'article.editor.form.note': 'Note:',
+  'article.editor.form.noteMessage': 'Changes here will affect how your story appears in public places like Bilerman’s homepage — not the story itself',
+  'article.editor.form.language': 'Content language',
+  'article.editor.form.tag': 'Tags',
+  'article.editor.form.tagContent': 'Add or change tags (up to 5) so readers know what your story is about',
+  'article.editor.form.publish': 'Publish',
+  'article.editor.form.addTag': 'Add a tag',
+  'article.editor.form.title': 'Title',
+  'article.editor.form.subtitle': 'Subtitle',
+  'article.editor.form.inputTitle': 'Please, input your title',
+  'article.editor.form.inputSubtitle': 'Please, input your subtitle',
+  'article.editor.form.selectLanguage': 'Please, select article language',
+  'article.editor.index.yourTitle': 'Your title ..',
 }
 
 export default {

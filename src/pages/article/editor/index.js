@@ -1,4 +1,5 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import EditorJs from 'react-editor-js'
 import { Progress } from 'antd'
 import { draftService } from 'services'
@@ -118,6 +119,7 @@ class Editor extends React.Component {
   }
 
   render() {
+    const { intl: { formatMessage } } = this.props
     const { draft, content, loaded, formStatus, progress } = this.state
     return (
       <div>
@@ -147,7 +149,7 @@ class Editor extends React.Component {
                       type="text"
                       className={style.searchInput}
                       id="editor-title"
-                      placeholder="Your title . ."
+                      placeholder={formatMessage({ id: 'article.editor.index.yourTitle' })}
                       value={draft.title}
                       onChange={this.onTitleChange}
                     />
@@ -170,4 +172,4 @@ class Editor extends React.Component {
   }
 }
 
-export default Editor
+export default injectIntl(Editor)
