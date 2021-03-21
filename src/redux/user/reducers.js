@@ -3,6 +3,7 @@ import actions from './actions'
 const initialState = {
   id: '',
   name: '',
+  surname: '',
   role: '',
   email: '',
   avatar: '',

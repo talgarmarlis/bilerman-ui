@@ -37,7 +37,10 @@ const EDITOR_JS_TOOLS = {
     inlineToolbar: true
   },
   // linkTool: LinkTool,
-  table: Table,
+  table: {
+    class: Table,
+    inlineToolbar: true
+  },
   simpleImage: {
     class: SimpleImage,
     inlineToolbar: true
@@ -61,13 +64,13 @@ const EDITOR_JS_TOOLS = {
     },
     inlineToolbar: true
   },
-  code: Code,
-  raw: Raw,
-  delimiter: Delimiter,
   quote: {
     class: Quote,
     inlineToolbar: true
   },
+  code: Code,
+  raw: Raw,
+  delimiter: Delimiter,
   checklist: {
     class: CheckList,
     inlineToolbar: true

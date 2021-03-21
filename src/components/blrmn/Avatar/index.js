@@ -12,6 +12,7 @@ const Avatar = ({author, size = 46, border = false, borderColor, type = "default
               <img
                 src={`${config.apiUrl}/users/${author.id}/avatar`}
                 alt={author.name}
+                style={{objectFit:"cover", height:"inherit", width:"inherit"}}
                 onError={(e)=>{e.target.onerror = null; e.target.src=`/resources/images/avatars/avatar-${type}.png`}}
               />}
             {!author.avatar && <img src={`/resources/images/avatars/avatar-${type}.png`} alt={author.name} />}

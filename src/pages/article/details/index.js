@@ -3,6 +3,7 @@ import { articleService } from 'services'
 import Details from "./details";
 import Author from "./author";
 import Profile from "./profile";
+import Comments from "./comments/comments";
 
 class ArticleDetails extends Component {
 
@@ -27,8 +28,9 @@ class ArticleDetails extends Component {
         {article &&
           <div className="row">
             <div className="col-lg-9 col-md-12">
-              <div className="d-block"><Details article={article} /></div>
+              <Details article={article} />
               <Profile author={article.user} />
+              <Comments article={article} />
             </div>
             <div className="col-lg-3 col-md-12">
               <div className="d-none d-lg-block">

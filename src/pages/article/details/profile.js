@@ -4,8 +4,8 @@ import Avatar from 'components/blrmn/Avatar'
 const Profile = ({ author }) => {
   return (
     <div className="card border-0 shadow-none">
-      <div className="card-body border-bottom border-red">
-        <div className="d-flex align-items-center flex-wrap pb-3">
+      <div className="card-body">
+        <div className="d-flex align-items-center flex-wrap pb-4 pt-4 border-top border-bottom border-red">
           <div className="mb-3 mr-3 flex-shrink-0">
             <Avatar author={author} size={110} />
           </div>

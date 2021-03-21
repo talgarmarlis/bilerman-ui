@@ -11,10 +11,10 @@ import config from "config";
 
 const Details = ({article, article: {id, title, subtitle, imageId, tags, body, createdAt, user, views, comments}}) => {
   return (
-    <div className="card border-0 shadow-none">
-      <div className="card-body border-bottom border-red">
+    <div className="card border-0 shadow-none mb-0">
+      <div className="card-body">
         <div className="mt-2 d-flex border-bottom-0 mb-2">
-          <div className="text-primary font-size-36 font-weight-bold mr-auto">{title}</div>
+          <div className="text-primary font-size-32 font-weight-bold mr-auto">{title}</div>
           <div className="mt-3"><Bookmark articleId={id} type="default" /></div>
         </div>
         <div className="mb-3 font-italic text-muted">{subtitle}</div>
@@ -38,7 +38,7 @@ const Details = ({article, article: {id, title, subtitle, imageId, tags, body, c
         {tags && tags.length > 0 &&
         <div className="mb-3">
           {tags.map(tag => (
-            <a href="#" onClick={e => e.preventDefault()} className="badge text-blue text-capitalize bg-light font-size-16 mr-3">
+            <a key={`tag_${tag.name}`} href="#" onClick={e => e.preventDefault()} className="badge text-blue text-capitalize bg-light font-size-16 mr-2 mb-2">
               #{tag.name}
             </a>
           ))}

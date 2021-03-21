@@ -1,10 +1,25 @@
 import React from 'react'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 import hljs from 'highlight.js'
 import {Table} from "antd";
 import 'highlight.js/styles/atom-one-light.css';
 import styles from './style.module.scss'
 
 const Index = ({ body }) => {
+
+  const getHTML = (text) => <div dangerouslySetInnerHTML={{__html: text}} />
+
+  const getCaption = (caption) => {
+    if(caption)
+      return (
+        <div className={`${styles.textDivider}`}>
+          <div className={`${styles.textDividerContent} font-italic`}>
+            {getHTML(caption.substr(0,50))}
+          </div>
+        </div>
+      )
+    return null;
+  }
 
   const getHeader = ({text, level}) => {
     switch(level) {
@@ -26,16 +41,17 @@ const Index = ({ body }) => {
   }
 
   const getParagraph = ({text}) => {
-    return <p>{text}</p>
+    return <p key={`p_${text.substring(0,10)}`}>{getHTML(text)}</p>
   }
 
-  const getQuote = ({text}) => {
+  const getQuote = ({text, caption}) => {
     return (
       <div className={`${styles.container} mb-3`}>
         <div className={`${styles.status} bg-default`} />
         <div className={`${styles.footer} py-3 pl-4 text-align-center font-italic`}>
-          {text}
+          {getHTML(text)}
         </div>
+        {getCaption(caption)}
       </div>
     )
   }
@@ -46,12 +62,12 @@ const Index = ({ body }) => {
       <div>
         <ul className="list">
           {items.map((item, index) => (
-            <li className={styles.item}>
+            <li className={styles.item} key={`renderList.${index + item}`}>
               <span className="font-weight-bold mr-2">
                 {style === "ordered" && index + 1}
                 {style === "unordered" && <i style={{fontSize: 8}} className="fa fa-circle" />}
               </span>
-              <div>{item}</div>
+              {getHTML(item)}
             </li>
           ))}
         </ul>
@@ -64,7 +80,7 @@ const Index = ({ body }) => {
     cols.map((col, index) => (
       columns.push(
         {
-          title: col,
+          title: getHTML(col),
           dataIndex: index,
           key: index + col,
           className: 'bg-transparent text-gray-6'
@@ -79,7 +95,7 @@ const Index = ({ body }) => {
     for(let i = 1; i < content.length; i += 1){
       const item = {key: i}
       for(let j = 0; j < content[i].length; j += 1) {
-        item[j] = content[i][j];
+        item[j] = getHTML(content[i][j]);
       }
       data.push(item)
     }
@@ -91,11 +107,13 @@ const Index = ({ body }) => {
       const cols = getTableColumns(content[0])
       const data = getTableData(content)
       return (
-        <div className="card border">
+        <div className="card border-light">
           <div className="card-body">
-            <div className={styles.table}>
-              <Table className="bg-default" columns={cols} dataSource={data} pagination={false} />
-            </div>
+            <PerfectScrollbar>
+              <div className={styles.table}>
+                <Table columns={cols} dataSource={data} pagination={false} />
+              </div>
+            </PerfectScrollbar>
           </div>
         </div>
       )
@@ -110,13 +128,7 @@ const Index = ({ body }) => {
           <div className="d-flex mb-3">
             <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={file.url} alt={caption} />
           </div>
-          {caption &&
-            <div className={`${styles.textDivider}`}>
-              <div className={`${styles.textDividerContent} font-italic`}>
-                {caption.substr(0,50)}
-              </div>
-            </div>
-          }
+          {getCaption(caption)}
         </div>
       </div>
     )
@@ -129,13 +141,7 @@ const Index = ({ body }) => {
           <div className="d-flex mb-3">
             <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={url} alt={caption} />
           </div>
-          {caption &&
-          <div className={`${styles.textDivider}`}>
-            <div className={`${styles.textDividerContent} font-italic`}>
-              {caption.substr(0,50)}
-            </div>
-          </div>
-          }
+          {getCaption(caption)}
         </div>
       </div>
     )
@@ -145,11 +151,7 @@ const Index = ({ body }) => {
     return (
       <div className="card border-0 bg-light">
         <div className="card-body">
-          <pre>
-            <code>
-              <div dangerouslySetInnerHTML={{__html: hljs.highlightAuto(code).value}} />
-            </code>
-          </pre>
+          <pre><code>{getHTML(hljs.highlightAuto(code).value)}</code></pre>
         </div>
       </div>
     )
@@ -159,11 +161,7 @@ const Index = ({ body }) => {
     return (
       <div className="card border-0 bg-light">
         <div className="card-body">
-          <pre>
-            <code>
-              <div dangerouslySetInnerHTML={{__html: hljs.highlightAuto(html).value}} />
-            </code>
-          </pre>
+          <pre><code>{getHTML(hljs.highlightAuto(html).value)}</code></pre>
         </div>
       </div>
     )
@@ -187,9 +185,7 @@ const Index = ({ body }) => {
                 <label htmlFor="checkbox-1" className={`${styles.control} ${styles.checkbox} mb-0`}>
                   <input type="checkbox" id="checkbox-1" checked={item.checked} readOnly />
                   <span className={`${styles.controlIndicator}`} />
-                  <div className="d-inline-block">
-                    <div>{item.text}</div>
-                  </div>
+                  <div className="d-inline-block">{getHTML(item.text)}</div>
                 </label>
               </li>
             ))}
@@ -264,18 +260,12 @@ const Index = ({ body }) => {
     }
 
     return (
-      <div className="card border-0">
+      <div key={`embed_${embed}`} className="card border-0">
         <div className="card-body">
           <div className="mb-3">
             {embedContent}
           </div>
-          {caption &&
-          <div className={`${styles.textDivider}`}>
-            <div className={`${styles.textDividerContent} font-italic`}>
-              {caption.substr(0,50)}
-            </div>
-          </div>
-          }
+          {getCaption(caption)}
         </div>
       </div>
     )

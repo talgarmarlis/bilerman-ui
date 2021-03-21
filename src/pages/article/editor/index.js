@@ -37,7 +37,7 @@ class Editor extends React.Component {
   onEdit = (api, content) => {
     const { draft } = this.state
     draft.subtitle = this.getSubtitle(content)
-    this.setState({ content })
+    this.setState({ content, draft })
     this.handleUpdate()
   }
 
@@ -64,14 +64,23 @@ class Editor extends React.Component {
       const item = blocks[i]
       if (item.type === 'paragraph') {
         const { text } = item.data
-        if (text.length > 500) {
-          const sub = text.slice(0, 500)
+        const textContent = this.getTextContent(text)
+        console.log(textContent)
+        if (textContent.length > 500) {
+          const sub = textContent.slice(0, 500)
           return sub.slice(0, sub.lastIndexOf(' '))
         }
-        return text
+        return textContent
       }
     }
     return ''
+  }
+
+  getTextContent = (s) => {
+    console.log(s)
+    const span = document.createElement('span');
+    span.innerHTML = s;
+    return span.textContent || span.innerText;
   }
 
   handleProgress = () => {
@@ -128,28 +137,30 @@ class Editor extends React.Component {
             handleImage={this.handleImageChange}
           />
         )}
-        <div className="card border-0 shadow-none">
-          <div className="card-body">
-            <div className="row">
-              <div className="col-xl-8 offset-xl-2">
-                <div className={style.wrapper}>
-                  <input
-                    type="text"
-                    className={style.searchInput}
-                    id="editor-title"
-                    placeholder="Your title . ."
-                    value={draft.title}
-                    onChange={this.onTitleChange}
-                  />
+        <div className="container-xl">
+          <div className="card border-0 shadow-none">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-xl-8 offset-xl-2">
+                  <div className={style.wrapper}>
+                    <input
+                      type="text"
+                      className={style.searchInput}
+                      id="editor-title"
+                      placeholder="Your title . ."
+                      value={draft.title}
+                      onChange={this.onTitleChange}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="col-xl-8 offset-xl-2 border-default">
-                {loaded && (
-                  <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
-                )}
-                {!loaded && (
-                  <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
-                )}
+                <div className="col-xl-8 offset-xl-2 border-default">
+                  {loaded && (
+                    <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
+                  )}
+                  {!loaded && (
+                    <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
+                  )}
+                </div>
               </div>
             </div>
           </div>
