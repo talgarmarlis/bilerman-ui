@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
+import { FormattedMessage, injectIntl } from 'react-intl'
 import moment from "moment";
 import {Button, Form, Input, Modal, Tooltip} from 'antd'
 import {DeleteOutlined} from "@ant-design/icons";
@@ -11,7 +12,7 @@ const { TextArea } = Input
 const { confirm } = Modal
 
 const mapStateToProps = ({ user }) => ({user})
-const Comment = ({user, comment, updateComment, deleteComment}) => {
+const Comment = ({user, comment, updateComment, deleteComment, intl: { formatMessage }}) => {
 
   const [repliesView, setRepliesView] = useState(false)
   const [editView, setEditView] = useState(false)
@@ -19,7 +20,7 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
 
   const remove = () => {
     confirm({
-      title: 'Are you sure to delete this comment?',
+      title: formatMessage({id: 'article.details.comments.deleteTitle'}),
       icon: <DeleteOutlined />,
       content: (
         <div>
@@ -28,9 +29,9 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
           </div>
         </div>
       ),
-      okText: 'Delete',
+      okText: formatMessage({id: 'article.details.comments.delete'}),
       okType: 'danger',
-      cancelText: 'Cancel',
+      cancelText: formatMessage({id: 'article.details.comments.cancel'}),
       onOk: () => deleteComment(comment.id)
     })
   }
@@ -63,12 +64,12 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
             </div>
             {user && user.id === comment.user.id &&
               <div>
-                <Tooltip placement="top" title="Edit comment">
+                <Tooltip placement="top" title={formatMessage({id: 'article.details.comments.editComment'})}>
                   <a href="javascript: void(0);" className="btn btn-sm mr-2" onClick={() => setEditView(!editView)}>
                     <i className="fe fe-edit-2" />
                   </a>
                 </Tooltip>
-                <Tooltip placement="top" title="Delete comment">
+                <Tooltip placement="top" title={formatMessage({id: 'article.details.comments.deleteComment'})}>
                   <a href="javascript: void(0);" className="btn btn-sm" size="small" onClick={remove}>
                     <i className="fe fe-trash" />
                   </a>
@@ -88,17 +89,17 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
                   name="message"
                   className="mb-2"
                   initialValue={comment.message}
-                  rules={[{ required: true, message: "pls fill out the form" }]}
+                  rules={[{ required: true, message: formatMessage({id: 'article.details.comments.commentMessageError'}) }]}
                 >
-                  <TextArea rows={2} placeholder="Your message" />
+                  <TextArea rows={2} placeholder={formatMessage({id: 'article.details.comments.commentMessage'})} />
                 </Form.Item>
                 <Form.Item>
                   <div className="float-right">
                     <Button className="btn mr-2" onClick={() => setEditView(!editView)}>
-                      Cancel
+                      <FormattedMessage id="article.details.comments.cancel" />
                     </Button>
                     <Button className="btn btn-default" loading={loading} htmlType="submit">
-                      Edit
+                      <FormattedMessage id="article.details.comments.edit" />
                     </Button>
                   </div>
                 </Form.Item>
@@ -108,7 +109,7 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
           <div className="d-flex flex-wrap justify-content-start align-items-start mb-3">
             <div className="text-muted font-italic mr-3">{moment(new Date(comment.createdAt)).fromNow()} </div>
             <a href="javascript: void(0);" className="text-blue" onClick={() => setRepliesView(!repliesView)}>
-              {comment.repliesCount} <i className="fe fe-message-circle mr-1" /> reply
+              {comment.repliesCount} <i className="fe fe-message-circle mr-1" /> <FormattedMessage id="article.details.comments.reply" />
             </a>
           </div>
         </div>
@@ -118,4 +119,4 @@ const Comment = ({user, comment, updateComment, deleteComment}) => {
   )
 }
 
-export default connect(mapStateToProps)(Comment)
+export default injectIntl(connect(mapStateToProps)(Comment))

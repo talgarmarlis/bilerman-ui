@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from "react-redux";
+import { FormattedMessage, injectIntl } from 'react-intl'
 import {Form, Button, Input} from 'antd'
 import {commentService} from 'services';
 import Reply from "./reply";
@@ -8,7 +9,7 @@ const { TextArea } = Input
 
 
 const mapStateToProps = ({ user }) => ({user})
-const Replies = ({user, comment}) => {
+const Replies = ({user, comment, intl: { formatMessage }}) => {
 
   const [replies, setReplies] = useState([])
   const [loading, setLoading] = useState(false)
@@ -67,14 +68,14 @@ const Replies = ({user, comment}) => {
           <Form.Item
             name="message"
             className="mb-2"
-            rules={[{ required: true, message: "pls fill out the form" }]}
+            rules={[{ required: true, message: formatMessage({id: 'article.details.comments.replyMessageError'}) }]}
           >
-            <TextArea rows={2} placeholder="Your message" />
+            <TextArea rows={2} placeholder={formatMessage({id: 'article.details.comments.replyMessage'})} />
           </Form.Item>
           <Form.Item>
             <Button className="float-right btn btn-primary" loading={loading} htmlType="submit" style={{ width: 100 }}>
               <i className="fe fe-message-circle mr-2" />
-              Reply
+              <FormattedMessage id="article.details.comments.reply" />
             </Button>
           </Form.Item>
         </Form>
@@ -83,7 +84,7 @@ const Replies = ({user, comment}) => {
       <div>
         {page && page.totalPages > 1 && page.number + 1 < page.totalPages &&
         <Button className="btn btn-default btn-block mt-3" onClick={() => loadReplies(page.number + 1)} loading={loadingReplies}>
-          Load More
+          <FormattedMessage id="article.details.comments.loadMore" />
         </Button>
         }
       </div>
@@ -91,4 +92,4 @@ const Replies = ({user, comment}) => {
   )
 }
 
-export default connect(mapStateToProps)(Replies)
+export default injectIntl(connect(mapStateToProps)(Replies))

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import moment from "moment";
 import Avatar from "components/blrmn/Avatar";
 import {connect} from "react-redux";
@@ -9,14 +10,14 @@ const { TextArea } = Input
 const { confirm } = Modal
 
 const mapStateToProps = ({ user }) => ({user})
-const Reply = ({user, reply, updateReply, deleteReply}) => {
+const Reply = ({user, reply, updateReply, deleteReply, intl: { formatMessage }}) => {
 
   const [editView, setEditView] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const remove = () => {
     confirm({
-      title: 'Are you sure to delete this reply?',
+      title: formatMessage({id: 'article.details.comments.deleteTitle'}),
       icon: <DeleteOutlined />,
       content: (
         <div>
@@ -25,9 +26,9 @@ const Reply = ({user, reply, updateReply, deleteReply}) => {
           </div>
         </div>
       ),
-      okText: 'Delete',
+      okText: formatMessage({id: 'article.details.comments.delete'}),
       okType: 'danger',
-      cancelText: 'Cancel',
+      cancelText: formatMessage({id: 'article.details.comments.cancel'}),
       onOk: () => deleteReply(reply.id)
     })
   }
@@ -59,12 +60,12 @@ const Reply = ({user, reply, updateReply, deleteReply}) => {
             </div>
             {user && user.id === reply.user.id &&
             <div>
-              <Tooltip placement="top" title="Edit comment">
+              <Tooltip placement="top" title={formatMessage({id: 'article.details.comments.editReply'})}>
                 <a href="javascript: void(0);" className="btn btn-sm mr-2" onClick={() => setEditView(!editView)}>
                   <i className="fe fe-edit-2" />
                 </a>
               </Tooltip>
-              <Tooltip placement="top" title="Delete comment">
+              <Tooltip placement="top" title={formatMessage({id: 'article.details.comments.deleteReply'})}>
                 <a href="javascript: void(0);" className="btn btn-sm" size="small" onClick={remove}>
                   <i className="fe fe-trash" />
                 </a>
@@ -80,17 +81,17 @@ const Reply = ({user, reply, updateReply, deleteReply}) => {
                 name="message"
                 className="mb-2"
                 initialValue={reply.message}
-                rules={[{ required: true, message: "pls fill out the form" }]}
+                rules={[{ required: true, message: formatMessage({id: 'article.details.comments.replyMessageError'}) }]}
               >
-                <TextArea rows={2} placeholder="Your message" />
+                <TextArea rows={2} placeholder={formatMessage({id: 'article.details.comments.replyMessage'})} />
               </Form.Item>
               <Form.Item>
                 <div className="float-right">
                   <Button className="btn mr-2" onClick={() => setEditView(!editView)}>
-                    Cancel
+                    <FormattedMessage id="article.details.comments.cancel" />
                   </Button>
                   <Button className="btn btn-primary" loading={loading} htmlType="submit">
-                    Edit
+                    <FormattedMessage id="article.details.comments.edit" />
                   </Button>
                 </div>
               </Form.Item>
@@ -103,4 +104,4 @@ const Reply = ({user, reply, updateReply, deleteReply}) => {
   )
 }
 
-export default connect(mapStateToProps)(Reply)
+export default injectIntl(connect(mapStateToProps)(Reply))
