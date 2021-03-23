@@ -49,19 +49,19 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
       <Menu.Item>
         <a href="#/article/editor">
           <i className="fe fe-feather mr-2" />
-          New Story
+          <FormattedMessage id="topBar.profileMenu.newStory" />
         </a>
       </Menu.Item>
       <Menu.Item>
         <a href="#/author/drafts">
           <i className="fe fe-layers mr-2" />
-          Drafts
+          <FormattedMessage id="topBar.profileMenu.drafts" />
         </a>
       </Menu.Item>
       <Menu.Item>
         <a href="#" onClick={e => e.preventDefault()}>
           <i className="fe fe-bookmark mr-2" />
-          Reading List
+          <FormattedMessage id="topBar.profileMenu.readingList" />
         </a>
       </Menu.Item>
       <Menu.Divider />
@@ -77,7 +77,7 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
         >
           {theme === 'default' && <i className="fe fe-moon mr-2" />}
           {theme !== 'default' && <i className="fe fe-sun mr-2" />}
-          Switch Theme
+          <FormattedMessage id="topBar.profileMenu.switchTheme" />
         </a>
       </Menu.Item>
       <Menu.Divider />
