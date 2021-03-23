@@ -56,6 +56,7 @@ const EDITOR_JS_TOOLS = {
               success: 1,
               file: {
                 url: `${config.apiUrl}/images/${result.data}`,
+                id: result.data,
               }
             };
           })

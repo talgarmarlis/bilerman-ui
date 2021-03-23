@@ -3,6 +3,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import hljs from 'highlight.js'
 import {Table} from "antd";
 import 'highlight.js/styles/atom-one-light.css';
+import config from "config";
 import styles from './style.module.scss'
 
 const Index = ({ body }) => {
@@ -126,7 +127,7 @@ const Index = ({ body }) => {
       <div className={`card ${withBorder ? '' : 'border-0'} ${withBackground ? 'bg-light' : ''}`}>
         <div className="card-body">
           <div className="d-flex mb-3">
-            <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={file.url} alt={caption} />
+            <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={`${config.apiUrl}/images/${file.id}`} alt={caption} />
           </div>
           {getCaption(caption)}
         </div>
