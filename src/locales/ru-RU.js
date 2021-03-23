@@ -133,7 +133,25 @@ const messages = {
   'auth.password.forgot.feedback.resetPassword': 'Обновить пароль',
   'auth.password.forgot.feedback.resetMyPassword': 'Обновить мой пароль',
   'auth.password.forgot.feedback.goToSignIn': 'Перейти к Войти',
-
+  'article.details.relatedArticles.relatedPosts': 'Похожие Посты',
+  'article.details.profile.follow': 'Подписаться',
+  'article.editor.form.publishDraft': 'Опубликуйте свой черновик',
+  'article.editor.form.preview': 'Предварительный просмотр вашей статьи',
+  'article.editor.form.image': 'Выберите изображение для просмотра',
+  'article.editor.form.imageQuality': 'Используйте высококачественное изображение в своей истории, чтобы сделать ее более привлекательной для читателей.',
+  'article.editor.form.note': 'Примечание:',
+  'article.editor.form.noteMessage': 'Изменения здесь повлияют на то, как ваша история будет отображаться в общественных местах, таких как домашняя страница Билермана, но не на саму историю.',
+  'article.editor.form.language': 'Язык содержания',
+  'article.editor.form.tag': 'Теги',
+  'article.editor.form.tagContent': 'Добавьте или измените теги (до 5), чтобы читатели знали, о чем ваша история',
+  'article.editor.form.publish': 'Публиковать',
+  'article.editor.form.addTag': 'Добавить тег',
+  'article.editor.form.title': 'Заголовок',
+  'article.editor.form.subtitle': 'Подзаголовок',
+  'article.editor.form.inputTitle': 'Пожалуйста, напишите название вашей статьи',
+  'article.editor.form.inputSubtitle': 'Пожалуйста, напишите свой подзаголовок',
+  'article.editor.form.selectLanguage': 'Пожалуйста, выберите язык статьи',
+  'article.editor.index.yourTitle': 'Ваш заголовок ..',
 }
 
 export default {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import Avatar from 'components/blrmn/Avatar'
 
 const Profile = ({ author }) => {
@@ -21,7 +22,7 @@ const Profile = ({ author }) => {
               onClick={event => event.preventDefault()}
               className="btn btn-sm btn-primary"
             >
-              Follow
+              <FormattedMessage id="article.details.profile.follow" />
             </a>
           </div>
         </div>
