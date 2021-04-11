@@ -127,7 +127,7 @@ const Index = ({ body }) => {
       <div className={`card ${withBorder ? '' : 'border-0'} ${withBackground ? 'bg-light' : ''}`}>
         <div className="card-body">
           <div className="d-flex mb-3">
-            <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={`${config.apiUrl}/images/${file.id}`} alt={caption} />
+            <img className={`img-fluid ml-auto mr-auto ${stretched ? 'width-100p' : ''}`} src={`${config.apiUrl}/images/article/${file.id}`} alt={caption} />
           </div>
           {getCaption(caption)}
         </div>

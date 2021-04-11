@@ -41,19 +41,19 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item>
-        <a href="#/author/profile">
+        <a href="/author/profile">
           <i className="fe fe-user mr-2" />
           <FormattedMessage id="topBar.profileMenu.editProfile" />
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a href="#/article/editor">
+        <a href="/article/editor">
           <i className="fe fe-feather mr-2" />
           <FormattedMessage id="topBar.profileMenu.newStory" />
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a href="#/author/drafts">
+        <a href="/author/drafts">
           <i className="fe fe-layers mr-2" />
           <FormattedMessage id="topBar.profileMenu.drafts" />
         </a>

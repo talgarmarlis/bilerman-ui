@@ -29,7 +29,7 @@ const Details = ({article, article: {id, title, subtitle, imageId, tags, body, c
         </div>
         {imageId &&
         <div className="d-flex">
-          <img style={{borderRadius:4}} className="img-fluid mb-4 ml-auto mr-auto width-100p" src={`${config.apiUrl}/images/${imageId}`} alt={title} />
+          <img style={{borderRadius:4}} className="img-fluid mb-4 ml-auto mr-auto width-100p" src={`${config.apiUrl}/images/article/${imageId}`} alt={title} />
         </div>
         }
         <div className="mb-5">

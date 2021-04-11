@@ -42,6 +42,16 @@ const routes = [
     exact: true,
   },
   {
+    path: '/auth/google',
+    Component: lazy(() => import('pages/auth/google')),
+    exact: true,
+  },
+  {
+    path: '/auth/facebook',
+    Component: lazy(() => import('pages/auth/facebook')),
+    exact: true,
+  },
+  {
     path: '/auth/password/forgot',
     Component: lazy(() => import('pages/auth/password/forgot')),
     exact: true,

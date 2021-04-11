@@ -19,7 +19,7 @@ const Comments = ({user, article, intl: { formatMessage }}) => {
 
   useEffect(() => {
     loadComments();
-  }, [])
+  })
 
   const loadComments = (pageNumber, size) =>{
     setLoadingComments(true)

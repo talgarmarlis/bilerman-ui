@@ -26,6 +26,41 @@ export async function login(email, password) {
     .catch(err => console.log(err))
 }
 
+export async function fbLogin(accessToken) {
+  return apiClient
+    .post(`/auth/facebook/${accessToken}`)
+    .then(response => {
+      if (response) {
+        store.set('auth', response.data)
+        return response.data
+      }
+      return false
+    })
+    .catch(err => console.log(err))
+}
+
+export async function googleLogin(gToken) {
+  // const xhr = new XMLHttpRequest();
+  // xhr.open('POST', 'http://localhost:8080/api/auth/google');
+  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  // xhr.onload = function() {
+  //   console.log(`Signed in as: ${xhr.responseText}`);
+  // };
+  //
+  // xhr.send(`idtoken=${  gToken}`);
+
+  return apiClient
+    .post(`/auth/google/${gToken}`)
+    .then(response => {
+      if (response) {
+        store.set('auth', response.data)
+        return response.data
+      }
+      return false
+    })
+    .catch(err => console.log(err))
+}
+
 export async function register(email, password, name) {
   return apiClient
     .post('/auth/register', {

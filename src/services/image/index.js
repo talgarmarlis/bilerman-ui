@@ -6,12 +6,12 @@ export const imageService = {
   download
 };
 
-function upload(file){
+function upload(category, file){
   const formData = new FormData()
   formData.append('file', file)
-  return apiClient.post('/images', formData);
+  return apiClient.post(`/images/${category}`, formData);
 }
 
-function download(id){
-  return apiClient.get(`/images/${id}`);
+function download(category, id){
+  return apiClient.get(`/images/${category}/${id}`);
 }

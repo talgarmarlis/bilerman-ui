@@ -14,6 +14,8 @@ const mapAuthProviders = {
   },
   jwt: {
     login: jwt.login,
+    fbLogin: jwt.fbLogin,
+    googleLogin: jwt.googleLogin,
     register: jwt.register,
     currentAccount: jwt.currentAccount,
     logout: jwt.logout,
@@ -30,6 +32,66 @@ export function* LOGIN({ payload }) {
   })
   const { authProvider: autProviderName } = yield select(state => state.settings)
   const success = yield call(mapAuthProviders[autProviderName].login, email, password)
+  if (success) {
+    yield put({
+      type: 'user/LOAD_CURRENT_ACCOUNT',
+    })
+    yield history.push('/')
+    notification.success({
+      message: 'Logged In',
+      description: 'You have successfully logged in!',
+    })
+  }
+  if (!success) {
+    yield put({
+      type: 'user/SET_STATE',
+      payload: {
+        loading: false,
+      },
+    })
+  }
+}
+
+export function* FB_LOGIN({ payload }) {
+  const { accessToken } = payload
+  yield put({
+    type: 'user/SET_STATE',
+    payload: {
+      loading: true,
+    },
+  })
+  const { authProvider: autProviderName } = yield select(state => state.settings)
+  const success = yield call(mapAuthProviders[autProviderName].fbLogin, accessToken)
+  if (success) {
+    yield put({
+      type: 'user/LOAD_CURRENT_ACCOUNT',
+    })
+    yield history.push('/')
+    notification.success({
+      message: 'Logged In',
+      description: 'You have successfully logged in!',
+    })
+  }
+  if (!success) {
+    yield put({
+      type: 'user/SET_STATE',
+      payload: {
+        loading: false,
+      },
+    })
+  }
+}
+
+export function* GOOGLE_LOGIN({ payload }) {
+  const { gToken } = payload
+  yield put({
+    type: 'user/SET_STATE',
+    payload: {
+      loading: true,
+    },
+  })
+  const { authProvider: autProviderName } = yield select(state => state.settings)
+  const success = yield call(mapAuthProviders[autProviderName].googleLogin, gToken)
   if (success) {
     yield put({
       type: 'user/LOAD_CURRENT_ACCOUNT',
@@ -139,6 +201,8 @@ export function* LOGOUT() {
 export default function* rootSaga() {
   yield all([
     takeEvery(actions.LOGIN, LOGIN),
+    takeEvery(actions.FB_LOGIN, FB_LOGIN),
+    takeEvery(actions.GOOGLE_LOGIN, GOOGLE_LOGIN),
     takeEvery(actions.REGISTER, REGISTER),
     takeEvery(actions.LOAD_CURRENT_ACCOUNT, LOAD_CURRENT_ACCOUNT),
     takeEvery(actions.LOGOUT, LOGOUT),

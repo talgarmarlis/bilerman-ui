@@ -15,7 +15,7 @@ import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import SimpleImage from '@editorjs/simple-image'
 import {imageService} from "services";
-import config from "../../../config";
+import config from "config";
 
 const EDITOR_JS_TOOLS = {
   paragraph: {
@@ -51,11 +51,11 @@ const EDITOR_JS_TOOLS = {
       field: 'file',
       uploader: {
         uploadByFile(file) {
-          return imageService.upload(file).then(result => {
+          return imageService.upload("article", file).then(result => {
             return {
               success: 1,
               file: {
-                url: `${config.apiUrl}/images/${result.data}`,
+                url: `${config.apiUrl}/images/article/${result.data}`,
                 id: result.data,
               }
             };

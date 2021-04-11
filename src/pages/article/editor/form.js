@@ -56,7 +56,7 @@ class PublicationForm extends React.Component {
 
   handleFileChange = file => {
     const { handleImage } = this.props
-    imageService.upload(file).then(result => {
+    imageService.upload("article", file).then(result => {
       console.log(result)
       handleImage(result.data)
     })
@@ -119,7 +119,7 @@ class PublicationForm extends React.Component {
                               </Button.Group>
                             </div>
                           </div>
-                          <img src={`${config.apiUrl}/images/${imageId}`} alt={title} />
+                          <img src={`${config.apiUrl}/images/article/${imageId}`} alt={title} />
                         </div>
                       </div>
                     )}

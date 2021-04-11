@@ -27,7 +27,7 @@ const Drafts = ({ user }) => {
             </h5>
           </div>
           <div className="d-flex flex-column justify-content-center">
-            <a href="#/article/editor" className="btn btn-outline-primary mb-1">
+            <a href="/article/editor" className="btn btn-outline-primary mb-1">
               <i className="fe fe-feather mr-2" />
               <FormattedMessage id="author.drafts.index.writeStory" />
             </a>
