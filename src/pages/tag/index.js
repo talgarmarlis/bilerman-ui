@@ -30,7 +30,7 @@ const Tags = () => {
 
   return (
     <div>
-      {articles && articles.length > 3 && (
+      {articles && articles.length > 0 && (
         <div className="font-size-14">
           <FormattedMessage id="pages.tag.index.tagged_in" />
           <span className="font-size-24 font-weight-bold" style={{textTransform: "capitalize"}}>
