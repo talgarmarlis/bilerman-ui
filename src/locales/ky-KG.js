@@ -155,6 +155,7 @@ const messages = {
   'article.editor.form.inputSubtitle': 'Сураныч, макалаңыздын атын жазыңыз',
   'article.editor.form.selectLanguage': 'Сураныч, макаланын тилин тандаңыз',
   'article.editor.index.yourTitle': 'Mакалаңыздын аталышы ..',
+  'pages.tag.index.tagged_in': 'TAGGED IN ',
 }
 
 export default {

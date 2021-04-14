@@ -156,6 +156,7 @@ const messages = {
   'article.editor.form.inputSubtitle': 'Please, input your subtitle',
   'article.editor.form.selectLanguage': 'Please, select article language',
   'article.editor.index.yourTitle': 'Your title ..',
+  'pages.tag.index.tagged_in': 'TAGGED IN ',
 }
 
 export default {
