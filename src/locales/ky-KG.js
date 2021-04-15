@@ -156,6 +156,7 @@ const messages = {
   'article.editor.form.selectLanguage': 'Сураныч, макаланын тилин тандаңыз',
   'article.editor.index.yourTitle': 'Mакалаңыздын аталышы ..',
   'pages.tag.index.tagged_in': 'TAGGED IN ',
+  'pages.tag.index.related_tags': 'Related tags ',
 }
 
 export default {

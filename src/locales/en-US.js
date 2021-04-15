@@ -157,6 +157,7 @@ const messages = {
   'article.editor.form.selectLanguage': 'Please, select article language',
   'article.editor.index.yourTitle': 'Your title ..',
   'pages.tag.index.tagged_in': 'TAGGED IN ',
+  'pages.tag.index.related_tags': 'Related tags ',
 }
 
 export default {

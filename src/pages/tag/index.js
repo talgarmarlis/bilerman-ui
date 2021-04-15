@@ -46,7 +46,9 @@ const Tags = () => {
         {params.tagName}
       </h1>
       <div className="mb-2 mt-2">
-        <span className="font-weight-lighter">Related tags</span>
+        <span className="font-weight-lighter">
+          <FormattedMessage id="pages.tag.index.related_tags" />
+        </span>
       </div>
 
       {tags.map(tag => (
