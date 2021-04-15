@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from "antd";
+import {Button} from "antd";
 import {articleService, tagService} from 'services'
 import { FormattedMessage } from 'react-intl'
 import {Link, useParams} from 'react-router-dom'
-import ArticleView3 from "components/blrmn/ArticleView3";
+import ArticleView5 from "components/blrmn/ArticleView5";
 
 const Tags = () => {
 
@@ -39,20 +39,24 @@ const Tags = () => {
 
   return (
     <div>
-      <div className="mb-3">
-        {tags.map(tag => (
-          <Link to={`/tags/${tag.name}`} className="badge text-blue text-capitalize bg-light font-size-16 mr-2 mb-2">
-            #{tag.name}
-          </Link>
-        ))}
-      </div>
-      <div className="font-size-14">
+      <div className="mb-2 mt-4">
         <FormattedMessage id="pages.tag.index.tagged_in" />
-        <span className="font-size-24 font-weight-bold" style={{textTransform: "capitalize"}}>
-          {params.tagName}
-        </span>
       </div>
-      {articles && articles.map(article => <ArticleView3 article={article} key={`article_${article.id}`} />)}
+      <h1 className="col-3 border-bottom font-weight-bold text-capitalize" style={{paddingBottom: '25px', borderColor: '#f2f4f8 !important'}}>
+        {params.tagName}
+      </h1>
+      <div className="mb-2 mt-2">
+        <span className="font-weight-lighter">Related tags</span>
+      </div>
+
+      {tags.map(tag => (
+        <Link to={`/tags/${tag.name}`} className="badge text-blue text-capitalize bg-light font-size-16 mr-2 mb-2">
+          {tag.name}
+        </Link>
+      ))}
+
+
+      {articles && articles.map(article => <ArticleView5 article={article} key={`article_${article.id}`} />)}
       {page && page.totalPages > 1 && page.number + 1 < page.totalPages && (
         <div className="mb-5 pb-2">
           <Button
