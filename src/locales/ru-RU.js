@@ -156,6 +156,8 @@ const messages = {
   'article.editor.form.inputSubtitle': 'Пожалуйста, напишите свой подзаголовок',
   'article.editor.form.selectLanguage': 'Пожалуйста, выберите язык статьи',
   'article.editor.index.yourTitle': 'Ваш заголовок ..',
+  'pages.tag.index.tagged_in': 'TAGGED IN ',
+  'pages.tag.index.related_tags': 'Related tags ',
 }
 
 export default {

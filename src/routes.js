@@ -35,6 +35,12 @@ const routes = [
     private: true,
   },
 
+  {
+    path: '/tags/:tagName',
+    Component: lazy(() => import('pages/tag')),
+    exact: true,
+  },
+
   // Auth Pages
   {
     path: '/auth/login',

@@ -38,9 +38,9 @@ const Details = ({article, article: {id, title, subtitle, imageId, tags, body, c
         {tags && tags.length > 0 &&
         <div className="mb-3">
           {tags.map(tag => (
-            <a key={`tag_${tag.name}`} href="#" onClick={e => e.preventDefault()} className="badge text-blue text-capitalize bg-light font-size-16 mr-2 mb-2">
+            <Link to={`/tags/${tag.name}`} className="badge text-blue text-capitalize bg-light font-size-16 mr-2 mb-2">
               #{tag.name}
-            </a>
+            </Link>
           ))}
         </div>
         }
