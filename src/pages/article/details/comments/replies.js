@@ -20,7 +20,7 @@ const Replies = ({user, comment, intl: { formatMessage }}) => {
 
   useEffect(() => {
     loadReplies();
-  })
+  }, [])
 
   const loadReplies = (pageNumber, size) =>{
     setLoadingReplies(true)

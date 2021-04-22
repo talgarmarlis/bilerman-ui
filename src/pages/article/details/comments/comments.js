@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState,
+  useEffect} from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import {Button, Form, Input} from "antd";
@@ -19,7 +20,7 @@ const Comments = ({user, article, intl: { formatMessage }}) => {
 
   useEffect(() => {
     loadComments();
-  })
+  }, [])
 
   const loadComments = (pageNumber, size) =>{
     setLoadingComments(true)
