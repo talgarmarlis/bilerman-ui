@@ -15,7 +15,7 @@ const ArticleView1 = ({article}) => {
       <div
         className={`${style.head}`}
         style={{
-          backgroundImage: article.imageId != null ? `url(${config.apiUrl}/images/${article.imageId})` : 'url(/resources/images/template/1.jpeg)',
+          backgroundImage: article.imageId != null ? `url(${config.apiUrl}/images/article/${article.imageId})` : 'url(/resources/images/template/1.jpeg)',
         }}
       >
         <div className={`${style.overlay} d-flex flex-nowrap`}>

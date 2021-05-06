@@ -20,7 +20,7 @@ const ArticleView4 = ({ article }) => {
                 <di>
                   <div
                     className={`${style.head} d-flex flex-column`}
-                    style={{ backgroundImage: `url(${config.apiUrl}/images/${article.imageId})`}}
+                    style={{ backgroundImage: `url(${config.apiUrl}/images/article/${article.imageId})`}}
                   />
                   <div className="mb-3 d-sm-none" />
                 </di>
