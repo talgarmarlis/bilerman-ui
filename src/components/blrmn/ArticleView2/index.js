@@ -22,12 +22,12 @@ const ArticleView2 = ({article}) => {
             <div className="d-flex">
               <div className="mr-auto">
                 <Link to={`/article/details/${article.id}`}>
-                  <h5 className="text-white font-weight-bold mr-3">{article.title}</h5>
+                  <h4 className="text-white font-weight-bold mr-3">{article.title}</h4>
                 </Link>
               </div>
               <div><Bookmark articleId={article.id} type="white" /></div>
             </div>
-            <div className="mt-auto mb-auto">
+            <div className="mt-2 mb-auto">
               <Link to={`/article/details/${article.id}`}>
                 <div className="text-white font-size-14" dangerouslySetInnerHTML={{__html: article.subtitle.substr(0,100).concat('. .')}} />
               </Link>

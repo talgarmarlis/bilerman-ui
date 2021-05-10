@@ -3,18 +3,23 @@
 .head {
   background-size: cover;
   background-position: center center;
-  border-radius: 5px;
+  border-radius: 18px;
 }
 
 .overlay {
   z-index: 10;
   opacity: 1;
-  border-radius: 5px;
+  border-radius: 18px;
   height: 210px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  background-color: rgba($default, 0.85);
+  transition: all 0.2s ease-in-out;
+}
+
+.overlay:hover{
   background-color: rgba($default, 0.7);
 }
 

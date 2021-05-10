@@ -48,11 +48,11 @@ const ArticleView3 = ({ article }) => {
                     <Bookmark articleId={article.id} type="primary" />
                   </div>
                 </div>
-                <div className="mb-2">
+                <div className="mb-1">
                   <Link to={`/article/details/${article.id}`}>
-                    <h5 className="text-primary font-weight-bold">
+                    <h4 className="text-primary font-weight-bold">
                       {article.title}
-                    </h5>
+                    </h4>
                   </Link>
                 </div>
                 <div className="mb-2">
