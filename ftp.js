@@ -8,8 +8,8 @@ const config = {
   user : "root",
   password : "H2C-2pZ-Rbe-pPQ",
   port: 22,
-  localRoot: "/Users/talguulu/Personal/Projects/bilerman-ui/build",
-  remoteRoot: "/var/www/html",
+  localRoot: "build",
+  remoteRoot: "/var/www/bilerman",
   include: ['*'],
   deleteRemote: true,
   sftp: true
