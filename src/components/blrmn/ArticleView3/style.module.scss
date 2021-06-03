@@ -3,8 +3,17 @@
 .head {
   background-size: cover;
   background-position: center center;
-  border-radius: 5px;
   height: 175px;
+  border-radius: 18px;
+  
+}
+
+.card-body{
+  transition: all 0.2s ease-in-out;
+}
+
+.card-body:hover{
+  box-shadow: none;
 }
 
 .item {
@@ -20,7 +29,7 @@
 }
 
 .itemContent {
-  border-radius: 5px;
+  border-radius: 18px;
   overflow: hidden;
   position: relative;
   background-color: transparent;

@@ -30,7 +30,7 @@ class Latest extends React.Component {
     return (
       <div>
         {articles && articles.length > 3 && (
-          <div className="font-size-24 font-weight-bold text-default mb-2">Latest publications</div>
+          <div className="mt-5 font-size-24 font-weight-bold text-default mb-2">Latest publications</div>
         )}
         {articles &&
           articles

@@ -19,16 +19,16 @@ const ArticleView1 = ({article}) => {
         }}
       >
         <div className={`${style.overlay} d-flex flex-nowrap`}>
-          <div className="card-body d-flex flex-column">
+          <div className="card-body d-flex flex-column pt-5">
             <div className="d-flex">
               <div className="mr-auto">
                 <Link to={`/article/details/${article.id}`}>
-                  <h3 className="text-white font-weight-bold mr-3">{article.title}</h3>
+                  <h2 className="text-white font-weight-bold mr-3">{article.title}</h2>
                 </Link>
               </div>
-              <div className="mt-2"><Bookmark articleId={article.id} type="white" /></div>
+              <div><Bookmark className="mt-2" articleId={article.id} type="white" /></div>
             </div>
-            <div className="mt-auto mb-auto">
+            <div className="mt-3 mb-auto">
               <Link to={`/article/details/${article.id}`}>
                 <div className="d-none d-sm-block text-white font-size-18" dangerouslySetInnerHTML={{__html: article.subtitle}} />
                 <div className="d-sm-none text-white" dangerouslySetInnerHTML={{__html: article.subtitle}} />

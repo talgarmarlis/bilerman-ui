@@ -32,7 +32,7 @@ const Details = ({article, article: {id, title, subtitle, imageId, tags, body, c
           <img style={{borderRadius:4}} className="img-fluid mb-4 ml-auto mr-auto width-100p" src={`${config.apiUrl}/images/article/${imageId}`} alt={title} />
         </div>
         }
-        <div className="mb-5">
+        <div className="mb-5 font-size-21">
           <Renderer body={JSON.parse(body)} />
         </div>
         {tags && tags.length > 0 &&
