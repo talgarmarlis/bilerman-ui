@@ -1,4 +1,4 @@
-const host = 'http://45.9.190.155:8888'
+const host = ''
 
 const config = {
   apiUrl: `${host}/api`,

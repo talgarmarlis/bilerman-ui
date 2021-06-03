@@ -24,3 +24,5 @@ yarn-error.log*
 node_modules
 
 ftp.js
+
+src/config.bak.js
