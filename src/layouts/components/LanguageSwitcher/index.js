@@ -17,25 +17,25 @@ const LanguageSwitcher = ({ dispatch, locale }) => {
       },
     })
   }
-  const language = locale.substr(0, 2)
+  let language = 'Eng'
+  if (locale.substr(0, 2) === 'ky') {
+    language = 'Кыр'
+  } else if (locale.substr(0, 2) === 'ru') {
+    language = 'Рус'
+  }
+
   const menu = (
     <Menu selectedKeys={[locale]} onClick={changeLanguage}>
       <Menu.Item key="ky-KG">
-        <span role="img" aria-label="Кыргызча" className="font-size-12 mr-2">
-          🇰🇬
-        </span>
+        <span role="img" aria-label="Кыргызча" className="font-size-12 " />
         Кыргызча
       </Menu.Item>
       <Menu.Item key="ru-RU">
-        <span role="img" aria-label="Русский" className="font-size-12 mr-2">
-          🇷🇺
-        </span>
+        <span role="img" aria-label="Русский" className="font-size-12 " />
         Русский
       </Menu.Item>
       <Menu.Item key="en-US">
-        <span role="img" aria-label="English" className="font-size-12 mr-2">
-          🇬🇧
-        </span>
+        <span role="img" aria-label="English" className="font-size-12 " />
         English
       </Menu.Item>
     </Menu>

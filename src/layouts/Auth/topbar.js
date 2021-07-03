@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 import Logo from '../components/Logo'
 import LanguageSwitcher from '../components/LanguageSwitcher'
+
 import style from './style.module.scss'
 
 const TopBar = ({ theme }) => {
@@ -13,18 +15,18 @@ const TopBar = ({ theme }) => {
         </div>
         <div className="d-none d-md-block text-primary mr-auto">Илим, билим жана технология</div>
         <div className="mb-0 mr-auto" />
-        <div className="mr-3">
-          <LanguageSwitcher />
-        </div>
         <div className="mr-2">
           <Link to="/auth/login" className="btn btn-default">
-            Sign in
+            <FormattedMessage id="auth.login.index.signIn" />
           </Link>
         </div>
-        <div>
+        <div className="mr-3">
           <Link to="/auth/register" className="btn btn-outline-default">
-            Sign up
+            <FormattedMessage id="auth.login.index.signUp" />
           </Link>
+        </div>
+        <div className="pt-1">
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

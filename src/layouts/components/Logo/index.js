@@ -19,10 +19,10 @@ const Logo = ({ theme = 'default' }) => {
         <div className="d-block d-sm-none">
           <Link to="/">
             {theme === 'default' && (
-              <img src="/resources/images/brand/b-logo-dark.png" alt="Bilerman logo" />
+              <img src="/resources/images/brand/bilerman-sm-dot.png" alt="Bilerman logo" />
             )}
             {theme === 'dark' && (
-              <img src="/resources/images/brand/b-logo-white.png" alt="Bilerman logo" />
+              <img src="/resources/images/brand/bilerman-sm-dot-dark.png" alt="Bilerman logo" />
             )}
           </Link>
         </div>
