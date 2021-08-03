@@ -14,10 +14,10 @@ const TopBar = ({ theme }) => {
         <div className="d-none d-md-block text-primary mr-auto">Илим, билим жана технология</div>
         <div className="mb-0 mr-auto" />
         <div className="mr-3">
-          <LanguageSwitcher />
-        </div>
-        <div className="">
           <UserMenu />
+        </div>
+        <div className="pt-1">
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

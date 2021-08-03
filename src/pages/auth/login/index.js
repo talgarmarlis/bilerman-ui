@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Input, Button, Form } from 'antd'
 import { Link } from 'react-router-dom'
 import style from '../style.module.scss'
-import FacebookLogin from "../facebook";
-import GoogleLogin from "../google";
+import FacebookLogin from '../facebook'
+import GoogleLogin from '../google'
 
 const mapStateToProps = ({ user, settings, dispatch }) => ({
   dispatch,
@@ -14,8 +14,7 @@ const mapStateToProps = ({ user, settings, dispatch }) => ({
   logo: settings.logo,
 })
 
-const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
-
+const Login = ({ dispatch, user, intl: { formatMessage } }) => {
   const onFinish = values => {
     dispatch({
       type: 'user/LOGIN',
@@ -31,7 +30,9 @@ const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
     <div>
       <div className="text-center mb-3">
         <h1 className="mb-3 px-3">
-          <strong><FormattedMessage id="auth.login.index.welcome" /> {logo}</strong>
+          <strong>
+            <FormattedMessage id="auth.login.index.welcome" />
+          </strong>
         </h1>
       </div>
       <div className={`card ${style.container}`}>
@@ -49,15 +50,23 @@ const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: formatMessage({ id: 'auth.login.index.inputEmail' }) }]}
+            rules={[
+              { required: true, message: formatMessage({ id: 'auth.login.index.inputEmail' }) },
+            ]}
           >
             <Input size="large" placeholder={formatMessage({ id: 'auth.login.index.email' })} />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: formatMessage({ id: 'auth.login.index.inputPassword' }) }]}
+            rules={[
+              { required: true, message: formatMessage({ id: 'auth.login.index.inputPassword' }) },
+            ]}
           >
-            <Input size="large" type="password" placeholder={formatMessage({ id: 'auth.login.index.password' })} />
+            <Input
+              size="large"
+              type="password"
+              placeholder={formatMessage({ id: 'auth.login.index.password' })}
+            />
           </Form.Item>
           <Button
             type="primary"
@@ -66,7 +75,9 @@ const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
             htmlType="submit"
             loading={user.loading}
           >
-            <strong><FormattedMessage id="auth.confirm.index.signIn" /></strong>
+            <strong>
+              <FormattedMessage id="auth.confirm.index.signIn" />
+            </strong>
           </Button>
         </Form>
         <Link to="/auth/password/forgot" className="kit__utils__link font-size-16">
@@ -74,7 +85,10 @@ const Login = ({ dispatch, user, logo, intl: { formatMessage } }) => {
         </Link>
         <div className="pt-3 text-center flex-grow-1">
           <div className="mb-3">
-            <span> or sign in with </span>
+            <span>
+              {' '}
+              <FormattedMessage id="auth.login.index.orSignInWithSocial" />{' '}
+            </span>
           </div>
           <div className="d-flex">
             <div className="ml-auto mr-3">

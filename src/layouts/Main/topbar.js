@@ -11,13 +11,16 @@ const TopBar = ({ theme }) => {
         <div className="mr-3">
           <Logo theme={theme} />
         </div>
-        <div className="d-none d-md-block text-primary mr-auto pt-2">Илим, билим жана технология</div>
-        <div className="mb-0 mr-auto" />
-        <div className="mr-3">
-          <LanguageSwitcher />
+        <div className="d-none d-md-block text-primary mr-auto pt-2">
+          Илим, билим жана технология
         </div>
-        <div className="">
+        <div className="mb-0 mr-auto" />
+
+        <div className="mr-3">
           <UserMenu />
+        </div>
+        <div className="pt-1">
+          <LanguageSwitcher />
         </div>
       </div>
     </div>
