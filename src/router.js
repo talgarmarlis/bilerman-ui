@@ -37,7 +37,7 @@ const Router = ({ history, routerAnimation }) => {
                           return (
                             <div className={routerAnimation}>
                               <Suspense fallback={null}>
-                                <Helmet title={title} />
+                                {title && <Helmet title={title} />}
                                 <Component {...routeProps} />
                               </Suspense>
                             </div>

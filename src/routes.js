@@ -8,6 +8,13 @@ const routes = [
     exact: true,
     title: 'Home',
   },
+  
+  {
+    path: '/test',
+    Component: lazy(() => import('pages/test')),
+    exact: true,
+    title: 'test',
+  },
 
   // Author pages
   {
@@ -26,7 +33,7 @@ const routes = [
   {
     path: '/article/details/:id',
     Component: lazy(() => import('pages/article/details')),
-    exact: true,
+    exact: true
   },
   {
     path: '/article/editor/:draftId?',
