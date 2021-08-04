@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import { Radio, Tooltip, Form, Input, Upload, Select, Button } from 'antd'
+import {Radio, Tooltip, Form, Input, Upload, Select, Button, Switch, Collapse} from 'antd'
 import { CameraOutlined, CloseOutlined, DeleteOutlined } from '@ant-design/icons'
 import { articleService, imageService } from 'services'
 import classNames from 'classnames'
@@ -11,11 +11,15 @@ import style from './style.module.scss'
 
 const { Dragger } = Upload
 const { TextArea } = Input
+const { Panel } = Collapse
 
 class PublicationForm extends React.Component {
   state = {
     tags: [],
     languageId: 1,
+    isCoverVisible: true,
+    isPublic: true,
+    isListed: true,
   }
 
   componentWillReceiveProps() {
@@ -29,6 +33,9 @@ class PublicationForm extends React.Component {
         imageId: draft.imageId,
         languageId: article.languageId,
         tags: article.tags.map(tag => tag.name),
+        isCoverVisible: article.isCoverVisible,
+        isPublic: article.isPublic,
+        isListed: article.isListed,
       })
     } else {
       this.setState({
@@ -44,6 +51,7 @@ class PublicationForm extends React.Component {
     const { draftId } = this.state
     this.setState({ loading: true })
     values.draftId = draftId
+    console.log(values)
     articleService.publishDraft(values).then(result => {
       this.setState({ loading: false })
       history.push(`/article/details/${result.data.id}`)
@@ -70,7 +78,7 @@ class PublicationForm extends React.Component {
 
   render() {
     const { enabled, toggleForm, intl: { formatMessage } } = this.props
-    const { tags, title, subtitle, languageId, loading, imageId } = this.state
+    const { tags, title, subtitle, languageId, loading, imageId, isCoverVisible, isPublic, isListed } = this.state
 
     return (
       <div>
@@ -97,11 +105,11 @@ class PublicationForm extends React.Component {
                 </h5>
                 <div className="cui__utils__line" style={{ marginTop: 25, marginBottom: 30 }} />
                 <Form
-                  layout="vertical"
                   hideRequiredMark
                   onFinish={this.onFinish}
                   onFinishFailed={this.onFinishFailed}
                   className="mb-4"
+                  labelAlign="left"
                 >
                   <div className={style.cui__sidebar__type}>
                     <div className={style.cui__sidebar__type__title}>
@@ -121,6 +129,14 @@ class PublicationForm extends React.Component {
                           </div>
                           <img src={`${config.apiUrl}/images/article/${imageId}`} alt={title} />
                         </div>
+                        <Form.Item
+                          name="isCoverVisible"
+                          initialValue={isCoverVisible}
+                          valuePropName="checked"
+                          label={formatMessage({ id: 'article.editor.form.isCoverVisible' })}
+                        >
+                          <Switch className="component-col d-flex ml-auto" />
+                        </Form.Item>
                       </div>
                     )}
                     {!imageId && (
@@ -202,41 +218,58 @@ class PublicationForm extends React.Component {
                       </Radio.Group>
                     </Form.Item>
                   </div>
-                  <div className={style.cui__sidebar__type}>
-                    <div className={style.cui__sidebar__type__title}>
-                      <span><FormattedMessage id="article.editor.form.tag" /></span>
-                    </div>
-                    <span className="text-muted">
-                      <FormattedMessage id="article.editor.form.tagContent" />
-                    </span>
-                    <Form.Item
-                      className="mb-2"
-                      name="tags"
-                      initialValue={tags}
-                      rules={[
-                        () => ({
-                          validator(rule, value) {
-                            if (value && value.length > 5) {
-                              // eslint-disable-next-line prefer-promise-reject-errors
-                              return Promise.reject('No more than 5 tags allowed')
-                            }
-                            return Promise.resolve()
-                          },
-                        }),
-                      ]}
-                      normalize={values =>
-                        values.map(x => x.replace(/[&\/\\#,+()$~%.'":*?<>{}`]/g, ''))
-                      }
-                    >
-                      <Select
-                        mode="tags"
-                        size="default"
-                        placeholder={formatMessage({ id: 'article.editor.form.addTag' })}
-                        style={{ width: '100%' }}
-                      />
-                    </Form.Item>
-                  </div>
-                  <div className="border-top pt-4">
+                  <Collapse defaultActiveKey={['1']} ghost>
+                    <Panel header={formatMessage({ id: 'article.editor.form.tag' })} key="1">
+                      <span className="text-muted">
+                        <FormattedMessage id="article.editor.form.tagContent" />
+                      </span>
+                      <Form.Item
+                        className="mb-2"
+                        name="tags"
+                        initialValue={tags}
+                        rules={[
+                          () => ({
+                            validator(rule, value) {
+                              if (value && value.length > 5) {
+                                // eslint-disable-next-line prefer-promise-reject-errors
+                                return Promise.reject('No more than 5 tags allowed')
+                              }
+                              return Promise.resolve()
+                            },
+                          }),
+                        ]}
+                        normalize={values =>
+                          values.map(x => x.replace(/[&\/\\#,+()$~%.'":*?<>{}`]/g, ''))
+                        }
+                      >
+                        <Select
+                          mode="tags"
+                          size="default"
+                          placeholder={formatMessage({ id: 'article.editor.form.addTag' })}
+                          style={{ width: '100%' }}
+                        />
+                      </Form.Item>
+                    </Panel>
+                    <Panel header={formatMessage({ id: 'article.editor.form.privacy' })} key="2">
+                      <Form.Item
+                        name="isPublic"
+                        initialValue={isPublic}
+                        valuePropName="checked"
+                        label={formatMessage({ id: 'article.editor.form.isPublic' })}
+                      >
+                        <Switch className="component-col d-flex ml-auto" />
+                      </Form.Item>
+                      <Form.Item
+                        name="isListed"
+                        initialValue={isListed}
+                        valuePropName="checked"
+                        label={formatMessage({ id: 'article.editor.form.isListed' })}
+                      >
+                        <Switch className="component-col d-flex ml-auto" />
+                      </Form.Item>
+                    </Panel>
+                  </Collapse>
+                  <div className="pt-4">
                     <Form.Item>
                       <Button type="primary" htmlType="submit" loading={loading}>
                         <FormattedMessage id="article.editor.form.publish" />
