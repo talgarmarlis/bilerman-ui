@@ -15,20 +15,17 @@ export const articleService = {
   clapArticle
 };
 
-function getArticles(page, size, title){
+function getArticles(page, size){
   let url = `/articles?`
   if(page) url = `${url}page=${page}`;
   if(size) url = `${url}&size=${size}`;
-  if(title) url = `${url}&title=${title}`;
   return apiClient.get(url);
 }
 
-function getArticlesByUser(userId, page, size, title){
-  let url = `/articles?`
-  if(userId) url = `${url}userId=${userId}`;
+function getArticlesByUser(userId, page, size){
+  let url = `/articles/users/${userId}?`
   if(page) url = `${url}&page=${page}`;
   if(size) url = `${url}&size=${size}`;
-  if(title) url = `${url}&title=${title}`;
   return apiClient.get(url);
 }
 
