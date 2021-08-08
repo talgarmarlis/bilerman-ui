@@ -3,10 +3,15 @@ import apiClient from 'services/axios'
 // eslint-disable-next-line import/prefer-default-export
 export const userService = {
   getUser,
+  getUsers,
   updateUser,
   uploadAvatar,
   uploadCover
 };
+
+function getUsers(){
+  return apiClient.get(`/users`);
+}
 
 function getUser(id){
   return apiClient.get(`/users/${id}`);

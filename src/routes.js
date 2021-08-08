@@ -29,6 +29,13 @@ const routes = [
     private: true,
   },
 
+  // Registered Users Page
+  {
+    path: '/regUsersList',
+    Component: lazy(() => import('pages/registeredUsersList')),
+    exact: true,
+  },
+
   // Article pages
   {
     path: '/article/details/:id',
