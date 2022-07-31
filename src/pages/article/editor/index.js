@@ -1,11 +1,13 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import EditorJs from 'react-editor-js'
+import { createReactEditorJS } from 'react-editor-js'
 import { Progress } from 'antd'
 import { draftService } from 'services'
 import PublicationForm from './form'
 import EDITOR_JS_TOOLS from './tools'
 import style from './style.module.scss'
+
+const ReactEditorJS = createReactEditorJS()
 
 class Editor extends React.Component {
   state = {
@@ -157,10 +159,10 @@ class Editor extends React.Component {
                 </div>
                 <div className="col-xl-8 offset-xl-2 border-default">
                   {loaded && (
-                    <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
+                    <ReactEditorJS data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
                   )}
                   {!loaded && (
-                    <EditorJs data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
+                    <ReactEditorJS data={content} tools={EDITOR_JS_TOOLS} onChange={this.onEdit} />
                   )}
                 </div>
               </div>
