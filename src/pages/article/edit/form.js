@@ -8,7 +8,7 @@ import PreviewImage from "./previewImage";
 
 const { TextArea } = Input
 
-const PublicationForm = ({handleImage, draft, intl: { formatMessage }}) => {
+const PublicationForm = ({handleImage, subtitle, draft, intl: { formatMessage }}) => {
 
   const [form] = Form.useForm()
   const [formArticle, setFormArticle] = useState({})
@@ -22,7 +22,8 @@ const PublicationForm = ({handleImage, draft, intl: { formatMessage }}) => {
       setFormArticle({
         draftId: draft.id,
         title: draft.title,
-        subtitle: draft.subtitle,
+        subtitle,
+        preview: draft.preview,
         imageId: draft.imageId,
         tags: [],
         languageId: 1,
@@ -39,6 +40,7 @@ const PublicationForm = ({handleImage, draft, intl: { formatMessage }}) => {
   const onFinish = values => {
     setloading(true)
     values.draftId = formArticle.draftId
+    values.preview = formArticle.preview
     articleService.publishDraft(values).then(result => {
       setloading(false)
       history.push(`/article/details/${result.data.id}`)
@@ -79,7 +81,6 @@ const PublicationForm = ({handleImage, draft, intl: { formatMessage }}) => {
         <Form.Item
           name="subtitle"
           initialValue={formArticle.subtitle}
-          rules={[{ required: true, message: formatMessage({ id: 'article.editor.form.inputSubtitle' }) }]}
         >
           <TextArea
             placeholder={formatMessage({ id: 'article.editor.form.subtitle' })}

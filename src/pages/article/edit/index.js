@@ -20,6 +20,7 @@ const ArticleEditor  = ({theme}) => {
 
   const params = useParams();
   const [formStatus, setFormStatus] = useState(false);
+  const [subtitle, setSubtitle] = useState();
   const [draft, setDraft] = useState({});
   const [defaultEditorData, setDefaultEditorData] = useState({});
   const [defaultTitle, setDefaultTitle] = useState();
@@ -51,12 +52,12 @@ const ArticleEditor  = ({theme}) => {
       draftService.saveDraft(updatedData).then(response => {
         const savedDraft =  response.data
         setDraft({ ...savedDraft })
-        if(!edited) setEdited(true)
       })
     }
   }
 
   const saveDraft = (content) => {
+    setSubtitle(content.subtitle)
     if (content.title || content.body) {
       const updatedData =  {...draft, ...content}
       draftService.saveDraft(updatedData).then(response => {
@@ -101,7 +102,7 @@ const ArticleEditor  = ({theme}) => {
                     </strong>
                   </h5>
                   <div className="cui__utils__line" style={{ marginTop: 25, marginBottom: 30 }} />
-                  {formStatus && <PublicationForm draft={draft} handleImage={handleImageChange} />}
+                  {formStatus && <PublicationForm subtitle={subtitle} draft={draft} handleImage={handleImageChange} />}
                 </div>
               </PerfectScrollbar>
             </div>

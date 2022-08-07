@@ -34,16 +34,40 @@ const Editor  = ({ saveDraft, defaultTitle, defaultEditorData, intl: { formatMes
 
   const handleSave = React.useCallback(async () => {
     const editorData = await editorCore.current.save();
-    setContent(prevState => ({...prevState, subtitle: getSubtitle(editorData), body: JSON.stringify(editorData) }))
+    setContent(prevState => ({...prevState, preview: getPreview(editorData), subtitle: getSubtitle(editorData), body: JSON.stringify(editorData) }))
   }, [])
+
+  const getPreview = (data) => {
+    const { blocks } = data
+    let textContent = ''
+    for (let i = 0; i < blocks.length; i += 1) {
+      const item = blocks[i]
+      if (item.type === 'paragraph' || item.type === 'header') {
+        const { text } = item.data
+        textContent += ` ${getTextContent(text)}`
+      }
+      else if (item.type === 'list') {
+        const { items } = item.data
+        for(let j = 0; j < items.length; j += 1) {
+          textContent += ` ${getTextContent(items[j])}`
+        }
+      }
+
+      if (textContent.length > 500) {
+        const sub = textContent.slice(0, 500)
+        return sub.slice(0, sub.lastIndexOf(' '))
+      }
+    }
+    return textContent
+  }
 
   const getSubtitle = (data) => {
     const { blocks } = data
     for (let i = 0; i < blocks.length; i += 1) {
       const item = blocks[i]
-      if (item.type === 'paragraph') {
+      if (item.type === 'paragraph' || item.type === 'header') {
         const { text } = item.data
-        const textContent = getTextContent(text)
+        const textContent = ` ${getTextContent(text)}`
         if (textContent.length > 500) {
           const sub = textContent.slice(0, 500)
           return sub.slice(0, sub.lastIndexOf(' '))
@@ -51,7 +75,7 @@ const Editor  = ({ saveDraft, defaultTitle, defaultEditorData, intl: { formatMes
         return textContent
       }
     }
-    return ''
+    return 'textContent'
   }
 
   const getTextContent = (s) => {
