@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { Input, Button, Form } from 'antd'
 import { Link } from 'react-router-dom'
 import style from '../style.module.scss'
-import FacebookLogin from '../facebook'
-import GoogleLogin from '../google'
 
 const mapStateToProps = ({ user, settings, dispatch }) => ({
   dispatch,
@@ -83,22 +81,6 @@ const Login = ({ dispatch, user, intl: { formatMessage } }) => {
         <Link to="/auth/password/forgot" className="kit__utils__link font-size-16">
           <FormattedMessage id="auth.login.index.forgotPassword" />
         </Link>
-        <div className="pt-3 text-center flex-grow-1">
-          <div className="mb-3">
-            <span>
-              {' '}
-              <FormattedMessage id="auth.login.index.orSignInWithSocial" />{' '}
-            </span>
-          </div>
-          <div className="d-flex">
-            <div className="ml-auto mr-3">
-              <GoogleLogin />
-            </div>
-            <div className="mr-auto">
-              <FacebookLogin />
-            </div>
-          </div>
-        </div>
       </div>
       <div className="text-center pt-2 mb-auto">
         <span className="mr-2">

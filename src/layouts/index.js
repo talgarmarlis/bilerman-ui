@@ -63,7 +63,7 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
       /^\/advanced(?=\/|$)/i.test(pathname)
     )
       return 'admin'
-    if (pathname.includes('/article/editor')) return 'editor'
+    if (pathname.includes('/article/edit')) return 'editor'
     if (isUserAuthorized) return 'main'
     if (isAuthPage) return 'auth'
     return 'public'

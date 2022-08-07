@@ -16,7 +16,7 @@ const TopBar = ({ theme }) => {
         </div>
         <div className="mb-0 mr-auto" />
 
-        <div className="mr-3">
+        <div className="mr-1">
           <UserMenu />
         </div>
         <div className="pt-1">

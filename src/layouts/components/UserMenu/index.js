@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
-import { Menu, Dropdown, Avatar } from 'antd'
+import { Menu, Dropdown, Avatar } from "antd";
 import config from 'config'
 import styles from './style.module.scss'
 
@@ -47,7 +47,7 @@ const ProfileMenu = ({ dispatch, user, theme }) => {
         </a>
       </Menu.Item>
       <Menu.Item>
-        <a href="/article/editor">
+        <a href="/article/edit">
           <i className="fe fe-feather mr-2" />
           <FormattedMessage id="topBar.profileMenu.newStory" />
         </a>

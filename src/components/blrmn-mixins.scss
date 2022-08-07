@@ -1,15 +1,32 @@
+// bilerman colors
+$blrmn-1: #354458;
+$blrmn-2: #EB7260;
+$blrmn-3: #96C5BD;
+$blrmn-4: #E9E0D6;
+$blrmn-4-light: rgba($blrmn-4, 0.5);
+
+
+// medium colors
+$medium-1: #FAFAFA; // more from user after article end
+$medium-2: #f2f2f2; // tags, inline code, highlights
+$medium-3: #E6E6E6; // section divisors
+$medium-4: #b3b3b1; // placeholder
+$medium-5: #757575; // light text, subtitles
+$medium-6: #292929; // text, titles
+
 // Colors
 $white: #fff;
-$black: #141322;
+$black: $medium-6;
 $blue: var(--kit-color-primary);
+//$blue: var(--kit-color-primary);
 $blue-light: #42baf9;
 $blue-dark: #2c60e4;
-$gray-1: #f2f4f8;
-$gray-2: #e4e9f0;
-$gray-3: #d9dee9;
-$gray-4: #c8c4db;
-$gray-5: #a1a1c2;
-$gray-6: #595c97;
+$gray-1: $medium-1;
+$gray-2: $medium-2;
+$gray-3: $medium-3;
+$gray-4: $medium-4;
+$gray-5: $medium-5;
+$gray-6: $medium-6;
 $yellow: #ff0;
 $orange: #faad15;
 $red: rgba(#EB7260, 0.5);;
@@ -17,14 +34,8 @@ $pink: #fd3995;
 $purple: #652eff;
 $green: #41b883;
 
-//bilerman colors
-$blrmn-1: #354458;
-$blrmn-2: #EB7260;
-$blrmn-3: #E9E0D6;
-$blrmn-3-light: rgba($blrmn-3, 0.5);
-
-$text: $blrmn-1;
-$border: $gray-2;
+$text: $medium-6;
+$border: $medium-3;
 
 // Accent colors
 $default: $blrmn-1;
@@ -34,8 +45,7 @@ $success: $green;
 $info: $blue-light;
 $warning: $orange;
 $danger: $red;
-$light: $blrmn-3-light;
-//$light: $gray-1;
+$light: $gray-1;
 $dark: $black;
 
 // dark theme

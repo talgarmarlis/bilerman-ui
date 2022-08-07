@@ -12,7 +12,7 @@ const Logo = ({ theme = 'default' }) => {
               <img src="/resources/images/brand/bilerman-dot-logo-dark.png" alt="Bilerman logo" />
             )}
             {theme === 'dark' && (
-              <img src="resources/images/brand/bilerman-dot-logo-white.png" alt="Bilerman logo" />
+              <img src="/resources/images/brand/bilerman-dot-logo-white.png" alt="Bilerman logo" />
             )}
           </Link>
         </div>

@@ -160,6 +160,7 @@ const messages = {
   'article.editor.form.isPublic': 'Open to public',
   'article.editor.form.isListed': 'Listed in public pages',
   'article.editor.index.yourTitle': 'Your title ..',
+  'article.editor.index.yourStory': 'Tell your story ..',
   'pages.tag.index.tagged_in': 'TAGGED IN ',
   'pages.tag.index.related_tags': 'Related tags ',
 }

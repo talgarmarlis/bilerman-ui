@@ -8,13 +8,6 @@ const routes = [
     exact: true,
     title: 'Home',
   },
-  
-  {
-    path: '/test',
-    Component: lazy(() => import('pages/test')),
-    exact: true,
-    title: 'test',
-  },
 
   // Author pages
   {
@@ -31,8 +24,8 @@ const routes = [
 
   // Registered Users Page
   {
-    path: '/regUsersList',
-    Component: lazy(() => import('pages/registeredUsersList')),
+    path: '/users',
+    Component: lazy(() => import('pages/users')),
     exact: true,
   },
 
@@ -43,8 +36,8 @@ const routes = [
     exact: true
   },
   {
-    path: '/article/editor/:draftId?',
-    Component: lazy(() => import('pages/article/editor')),
+    path: '/article/edit/:draftId?',
+    Component: lazy(() => import('pages/article/edit')),
     exact: true,
     private: true,
   },
@@ -59,16 +52,6 @@ const routes = [
   {
     path: '/auth/login',
     Component: lazy(() => import('pages/auth/login')),
-    exact: true,
-  },
-  {
-    path: '/auth/google',
-    Component: lazy(() => import('pages/auth/google')),
-    exact: true,
-  },
-  {
-    path: '/auth/facebook',
-    Component: lazy(() => import('pages/auth/facebook')),
     exact: true,
   },
   {
@@ -92,19 +75,16 @@ const routes = [
     exact: true,
     title: 'Confirm',
   },
+
+  // Eror pages
   {
-    path: '/auth/lockscreen',
-    Component: lazy(() => import('pages/auth/lockscreen')),
+    path: '/error/404',
+    Component: lazy(() => import('pages/error/404')),
     exact: true,
   },
   {
-    path: '/auth/404',
-    Component: lazy(() => import('pages/auth/404')),
-    exact: true,
-  },
-  {
-    path: '/auth/500',
-    Component: lazy(() => import('pages/auth/500')),
+    path: '/error/500',
+    Component: lazy(() => import('pages/error/500')),
     exact: true,
   },
 
@@ -133,269 +113,269 @@ const routes = [
   // Dashboards
   {
     path: '/dashboard/alpha',
-    Component: lazy(() => import('pages/dashboard/alpha')),
+    Component: lazy(() => import('pages/@clean-ui-pages/dashboard/alpha')),
     exact: true,
   },
   {
     path: '/dashboard/beta',
-    Component: lazy(() => import('pages/dashboard/beta')),
+    Component: lazy(() => import('pages/@clean-ui-pages/dashboard/beta')),
     exact: true,
   },
   {
     path: '/dashboard/gamma',
-    Component: lazy(() => import('pages/dashboard/gamma')),
+    Component: lazy(() => import('pages/@clean-ui-pages/dashboard/gamma')),
     exact: true,
   },
   {
     path: '/dashboard/crypto',
-    Component: lazy(() => import('pages/dashboard/crypto')),
+    Component: lazy(() => import('pages/@clean-ui-pages/dashboard/crypto')),
     exact: true,
   },
 
   // Ecommerce
   {
     path: '/ecommerce/dashboard',
-    Component: lazy(() => import('pages/ecommerce/dashboard')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ecommerce/dashboard')),
     exact: true,
   },
   {
     path: '/ecommerce/orders',
-    Component: lazy(() => import('pages/ecommerce/orders')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ecommerce/orders')),
     exact: true,
   },
   {
     path: '/ecommerce/product-catalog',
-    Component: lazy(() => import('pages/ecommerce/product-catalog')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ecommerce/product-catalog')),
     exact: true,
   },
   {
     path: '/ecommerce/product-details',
-    Component: lazy(() => import('pages/ecommerce/product-details')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ecommerce/product-details')),
     exact: true,
   },
   {
     path: '/ecommerce/cart',
-    Component: lazy(() => import('pages/ecommerce/cart')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ecommerce/cart')),
     exact: true,
   },
 
   // Apps
   {
     path: '/apps/messaging',
-    Component: lazy(() => import('pages/apps/messaging')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/messaging')),
     exact: true,
   },
   {
     path: '/apps/calendar',
-    Component: lazy(() => import('pages/apps/calendar')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/calendar')),
     exact: true,
   },
   {
     path: '/apps/mail',
-    Component: lazy(() => import('pages/apps/mail')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/mail')),
     exact: true,
   },
   {
     path: '/apps/profile',
-    Component: lazy(() => import('pages/apps/profile')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/profile')),
     exact: true,
   },
   {
     path: '/apps/gallery',
-    Component: lazy(() => import('pages/apps/gallery')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/gallery')),
     exact: true,
   },
   // Extra Apps
   {
     path: '/apps/github-explore',
-    Component: lazy(() => import('pages/apps/github-explore')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/github-explore')),
     exact: true,
   },
   {
     path: '/apps/github-discuss',
-    Component: lazy(() => import('pages/apps/github-discuss')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/github-discuss')),
     exact: true,
   },
   {
     path: '/apps/digitalocean-droplets',
-    Component: lazy(() => import('pages/apps/digitalocean-droplets')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/digitalocean-droplets')),
     exact: true,
   },
   {
     path: '/apps/digitalocean-create',
-    Component: lazy(() => import('pages/apps/digitalocean-create')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/digitalocean-create')),
     exact: true,
   },
   {
     path: '/apps/google-analytics',
-    Component: lazy(() => import('pages/apps/google-analytics')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/google-analytics')),
     exact: true,
   },
   {
     path: '/apps/wordpress-post',
-    Component: lazy(() => import('pages/apps/wordpress-post')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/wordpress-post')),
     exact: true,
   },
   {
     path: '/apps/wordpress-posts',
-    Component: lazy(() => import('pages/apps/wordpress-posts')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/wordpress-posts')),
     exact: true,
   },
   {
     path: '/apps/wordpress-add',
-    Component: lazy(() => import('pages/apps/wordpress-add')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/wordpress-add')),
     exact: true,
   },
   {
     path: '/apps/todoist-list',
-    Component: lazy(() => import('pages/apps/todoist-list')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/todoist-list')),
     exact: true,
   },
   {
     path: '/apps/jira-dashboard',
-    Component: lazy(() => import('pages/apps/jira-dashboard')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/jira-dashboard')),
     exact: true,
   },
   {
     path: '/apps/jira-agile-board',
-    Component: lazy(() => import('pages/apps/jira-agile-board')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/jira-agile-board')),
     exact: true,
   },
   {
     path: '/apps/helpdesk-dashboard',
-    Component: lazy(() => import('pages/apps/helpdesk-dashboard')),
+    Component: lazy(() => import('pages/@clean-ui-pages/apps/helpdesk-dashboard')),
     exact: true,
   },
   // Widgets
   {
     path: '/widgets/general',
-    Component: lazy(() => import('pages/widgets/general')),
+    Component: lazy(() => import('pages/@clean-ui-pages/widgets/general')),
     exact: true,
   },
   {
     path: '/widgets/lists',
-    Component: lazy(() => import('pages/widgets/lists')),
+    Component: lazy(() => import('pages/@clean-ui-pages/widgets/lists')),
     exact: true,
   },
   {
     path: '/widgets/tables',
-    Component: lazy(() => import('pages/widgets/tables')),
+    Component: lazy(() => import('pages/@clean-ui-pages/widgets/tables')),
     exact: true,
   },
   {
     path: '/widgets/charts',
-    Component: lazy(() => import('pages/widgets/charts')),
+    Component: lazy(() => import('pages/@clean-ui-pages/widgets/charts')),
     exact: true,
   },
   // Cards
   {
     path: '/cards/basic-cards',
-    Component: lazy(() => import('pages/cards/basic-cards')),
+    Component: lazy(() => import('pages/@clean-ui-pages/cards/basic-cards')),
     exact: true,
   },
   {
     path: '/cards/tabbed-cards',
-    Component: lazy(() => import('pages/cards/tabbed-cards')),
+    Component: lazy(() => import('pages/@clean-ui-pages/cards/tabbed-cards')),
     exact: true,
   },
   // UI Kits
   {
     path: '/ui-kits/bootstrap',
-    Component: lazy(() => import('pages/ui-kits/bootstrap')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ui-kits/bootstrap')),
     exact: true,
   },
   {
     path: '/ui-kits/antd',
-    Component: lazy(() => import('pages/ui-kits/antd')),
+    Component: lazy(() => import('pages/@clean-ui-pages/ui-kits/antd')),
     exact: true,
   },
   // Tables
   {
     path: '/tables/bootstrap',
-    Component: lazy(() => import('pages/tables/bootstrap')),
+    Component: lazy(() => import('pages/@clean-ui-pages/tables/bootstrap')),
     exact: true,
   },
   {
     path: '/tables/antd',
-    Component: lazy(() => import('pages/tables/antd')),
+    Component: lazy(() => import('pages/@clean-ui-pages/tables/antd')),
     exact: true,
   },
   // Charts
   {
     path: '/charts/chartistjs',
-    Component: lazy(() => import('pages/charts/chartistjs')),
+    Component: lazy(() => import('pages/@clean-ui-pages/charts/chartistjs')),
     exact: true,
   },
   {
     path: '/charts/chartjs',
-    Component: lazy(() => import('pages/charts/chartjs')),
+    Component: lazy(() => import('pages/@clean-ui-pages/charts/chartjs')),
     exact: true,
   },
   {
     path: '/charts/c3',
-    Component: lazy(() => import('pages/charts/c3')),
+    Component: lazy(() => import('pages/@clean-ui-pages/charts/c3')),
     exact: true,
   },
   // Icons
   {
     path: '/icons/feather-icons',
-    Component: lazy(() => import('pages/icons/feather-icons')),
+    Component: lazy(() => import('pages/@clean-ui-pages/icons/feather-icons')),
     exact: true,
   },
   {
     path: '/icons/fontawesome',
-    Component: lazy(() => import('pages/icons/fontawesome')),
+    Component: lazy(() => import('pages/@clean-ui-pages/icons/fontawesome')),
     exact: true,
   },
   {
     path: '/icons/linearicons-free',
-    Component: lazy(() => import('pages/icons/linearicons-free')),
+    Component: lazy(() => import('pages/@clean-ui-pages/icons/linearicons-free')),
     exact: true,
   },
   {
     path: '/icons/icomoon-free',
-    Component: lazy(() => import('pages/icons/icomoon-free')),
+    Component: lazy(() => import('pages/@clean-ui-pages/icons/icomoon-free')),
     exact: true,
   },
   // Advanced
   {
     path: '/advanced/form-examples',
-    Component: lazy(() => import('pages/advanced/form-examples')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/form-examples')),
     exact: true,
   },
   {
     path: '/advanced/email-templates',
-    Component: lazy(() => import('pages/advanced/email-templates')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/email-templates')),
     exact: true,
   },
   {
     path: '/advanced/utilities',
-    Component: lazy(() => import('pages/advanced/utilities')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/utilities')),
     exact: true,
   },
   {
     path: '/advanced/grid',
-    Component: lazy(() => import('pages/advanced/grid')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/grid')),
     exact: true,
   },
   {
     path: '/advanced/typography',
-    Component: lazy(() => import('pages/advanced/typography')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/typography')),
     exact: true,
   },
   {
     path: '/advanced/pricing-tables',
-    Component: lazy(() => import('pages/advanced/pricing-tables')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/pricing-tables')),
     exact: true,
   },
   {
     path: '/advanced/invoice',
-    Component: lazy(() => import('pages/advanced/invoice')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/invoice')),
     exact: true,
   },
   {
     path: '/advanced/colors',
-    Component: lazy(() => import('pages/advanced/colors')),
+    Component: lazy(() => import('pages/@clean-ui-pages/advanced/colors')),
     exact: true,
   },
 ]

@@ -32,6 +32,7 @@ module.exports = {
     "import/no-unresolved": 0,
     "no-console": 0,
     "react/no-multi-comp": 0,
+    "react-hooks/exhaustive-deps": 0,
     // "no-unused-vars": 0
   },
   "parserOptions": {

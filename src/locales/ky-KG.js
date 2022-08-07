@@ -174,6 +174,7 @@ const messages = {
   'article.editor.form.isPublic': 'Жалпыга ачык',
   'article.editor.form.isListed': 'Жалпыга ачык баракчаларда тизмеленген',
   'article.editor.index.yourTitle': 'Mакалаңыздын аталышы ..',
+  'article.editor.index.yourStory': 'Tell your story ..',
   'pages.tag.index.tagged_in': 'TAGGED IN ',
   'pages.tag.index.related_tags': 'Related tags ',
 }

@@ -4,13 +4,30 @@ apply("default");
 [data-kit-theme="default"] {
   @import '~antd/lib/style/components.less';
 
+  // bilerman colors
+  @blrmn-1: #354458;
+  @blrmn-2: #EB7260;
+  @blrmn-3: #96C5BD;
+  @blrmn-4: #E9E0D6;
+  @blrmn-4-light: rgba(@blrmn-4, 0.5);
+
+
+  // medium colors
+  @medium-1: #FAFAFA; // more from user after article end
+  @medium-2: #f2f2f2; // tags, inline code, highlights
+  @medium-3: #E6E6E6; // section divisors
+  @medium-4: #b3b3b1; // placeholder
+  @medium-5: #757575; // light text, subtitles
+  @medium-6: #292929; // text, titles
+
   @kit-white: #ffffff;
   @kit-black: #141322;
-  @kit-gray-1: #f0f2f4;
-  @kit-gray-2: #e4e9f0;
-  @kit-gray-3: #d9dee9;
-  @kit-gray-4: #c8c4db;
-  @kit-gray-6: #595c97;
+  @kit-gray-1: @medium-1;
+  @kit-gray-2: @medium-2;
+  @kit-gray-3: @medium-3;
+  @kit-gray-4: @medium-4;
+  @kit-gray-5: @medium-5;
+  @kit-gray-6: @blrmn-1;
   @kit-blue: #4b7cf3;
   @kit-blue-light: #42baf9;
   @kit-red: #f5222e;
@@ -18,7 +35,7 @@ apply("default");
   @kit-orange: #faad15;
 
   @text-color: @kit-gray-6;
-  @primary-color: @kit-blue;
+  @primary-color: @blrmn-1;
   @info-color: @kit-blue;
   @success-color: @kit-green;
   @processing-color: @kit-blue;
@@ -44,7 +61,7 @@ apply("default");
 
   @btn-primary-color: @kit-white;
   @btn-primary-bg: @kit-blue;
-  @btn-default-color: @kit-gray-6;
+  @btn-default-color: @blrmn-1;
   @btn-default-bg: @kit-white;
   @btn-danger-color: @kit-white;
   @btn-danger-bg: @kit-red;

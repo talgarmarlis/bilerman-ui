@@ -1,0 +1,148 @@
+@import 'components/mixins.scss';
+
+.searchInput {
+  width: 100%;
+  border: none;
+  font-size: rem(34);
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: rem(10);
+  @media screen and (max-width: $sm-max-width) {
+    font-size: rem(30);
+  }
+}
+
+.wrapper {
+  max-width: 650px;
+  margin: auto
+}
+
+.cui__sidebar {
+  width: rem(500);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: $white;
+  transform: translateX(530px);
+  @include transition-slow();
+
+  &__toggled {
+    transform: translateX(0);
+    box-shadow: $shadow;
+  }
+
+  &__close {
+    float: right;
+    position: relative;
+    top: 4px;
+  }
+
+  &__inner {
+    padding: rem(23) rem(30) 0;
+
+    @media (max-width: $sm-max-width) {
+      padding: rem(23) rem(20) 0;
+    }
+  }
+
+  &__type {
+    padding: rem(20) 0;
+    border-top: 1px solid $border;
+    margin: 15px 0 0 0;
+
+    &__title {
+      margin: rem(-32) 0 rem(15);
+      color: $blrmn-1;
+      font-size: 12px;
+      text-transform: uppercase;
+
+      span {
+        padding-right: rem(20);
+        background: $white;
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: rem(10);
+    display: flex;
+    align-items: center;
+  }
+}
+
+.item {
+  margin-bottom: rem(25);
+}
+
+.itemContent {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  width: 100%;
+  height: rem(184);
+  margin-bottom: rem(15);
+
+  &:hover {
+    .itemControl {
+      z-index: 10;
+      opacity: 1;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.itemControl {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0;
+  background-color: rgba($gray-6, 0.5);
+  @include transition-slow;
+}
+
+.itemControlContainer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+
+// dark theme
+[data-kit-theme='dark'] {
+  .cui__sidebar {
+    background: $dark-gray-6;
+
+    &__type {
+      border-top: 1px solid $dark-gray-5;
+
+      &__title {
+        span {
+          background: $dark-gray-6;
+        }
+      }
+    }
+
+    &__toggleButton {
+      background: $dark-gray-4;
+    }
+  }
+}

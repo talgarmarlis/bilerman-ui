@@ -27,7 +27,7 @@ const initialState = {
     authPagesColor: 'white', // white, gray, image
     primaryColor: '#354458', // '#4b7cf3',
     leftMenuWidth: 256,
-    isMenuUnfixed: false,
+    isMenuUnfixed: true,
     isMenuShadow: false,
     isTopbarFixed: false,
     isGrayTopbar: false,

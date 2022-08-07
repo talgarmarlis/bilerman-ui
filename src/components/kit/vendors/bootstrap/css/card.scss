@@ -7,7 +7,7 @@
 .card-header,
 .card-footer {
   border-color: $border;
-  border-radius: calc(18px - 1px);
+  border-radius: calc(7px - 1px);
 }
 
 .card-header,
@@ -21,11 +21,11 @@
   }
 
   &:last-child {
-    border-radius: 0 0 calc(18px - 1px) calc(18px - 1px);
+    border-radius: 0 0 calc(7px - 1px) calc(7px - 1px);
   }
 
   &:first-child {
-    border-radius: calc(18px - 1px) calc(18px - 1px) 0 0;
+    border-radius: calc(7px - 1px) calc(7px - 1px) 0 0;
   }
 }
 

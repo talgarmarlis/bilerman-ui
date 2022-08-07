@@ -3,7 +3,6 @@ import { Layout } from 'antd'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import TopBar from './topbar'
 import Footer from '../components/Footer'
 
 const mapStateToProps = ({ settings }) => ({
@@ -26,9 +25,6 @@ const EditorLayout = ({
   isSquaredBorders,
   isCardShadow,
   isBorderless,
-  isTopbarFixed,
-  isGrayTopbar,
-  theme,
 }) => {
   return (
     <div className={classNames({ cui__layout__grayBackground: isGrayBackground })}>
@@ -43,17 +39,9 @@ const EditorLayout = ({
         })}
       >
         <Layout>
-          <Layout.Header
-            className={classNames('cui__layout__header', {
-              cui__layout__fixedHeader: isTopbarFixed,
-              cui__layout__headerGray: isGrayTopbar,
-            })}
-          >
-            <TopBar theme={theme} />
-          </Layout.Header>
-          <Layout.Content style={{ height: '100%', position: 'relative' }}>
-            <div>{children}</div>
-          </Layout.Content>
+          <div style={{flex: 1}}>
+            {children}
+          </div>
           <Layout.Footer>
             <Footer />
           </Layout.Footer>

@@ -86,7 +86,7 @@ class DraftList extends Component {
                     overlay={
                       <Menu>
                         <Menu.Item>
-                          <a href={`/article/editor/${draft.id}`}>
+                          <a href={`/article/edit/${draft.id}`}>
                             <i className="dropdown-icon fe fe-edit mr-1" />
                             <FormattedMessage id="author.drafts.list.edit" />
                           </a>

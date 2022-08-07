@@ -23,7 +23,7 @@ const Localization = ({ children, settings: { locale } }) => {
   moment.locale(currentLocale.code)
   return (
     <ConfigProvider locale={currentLocale.localeAntd}>
-      <IntlProvider locale={currentLocale.locale} messages={currentLocale.messages}>
+      <IntlProvider locale="en-US" messages={currentLocale.messages}>
         {children}
       </IntlProvider>
     </ConfigProvider>

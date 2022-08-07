@@ -45,7 +45,7 @@ const Router = ({ history, routerAnimation }) => {
                         }}
                       />
                     ))}
-                    <Redirect to="/auth/404" />
+                    <Redirect to="/error/404" />
                   </Switch>
                 </CSSTransition>
               </SwitchTransition>
