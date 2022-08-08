@@ -1,5 +1,5 @@
-const host = 'http://localhost:8080'
-// const host = 'http://157.230.78.186:8888'
+// const host = 'http://localhost:8080'
+const host = 'http://api.bilerman.kg'
 
 const config = {
   apiUrl: `${host}/api`,
