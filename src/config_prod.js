@@ -1,4 +1,4 @@
-const host = 'http://api.bilerman.kg'
+const host = 'https://api.bilerman.kg'
 
 const config = {
   apiUrl: `${host}/api`,
