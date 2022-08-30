@@ -42,6 +42,7 @@ const ArticleEditor  = ({theme}) => {
       const editorData = JSON.parse(draftData.body)
       setDefaultEditorData({...editorData})
       setLoaded(true)
+      setEdited(true)
     })
   }
 
