@@ -17,7 +17,7 @@ const PublicationForm = ({handleImage, subtitle, draft, intl: { formatMessage }}
   useEffect(() => {
     if (draft.published) {
       const { article } = draft
-      setFormArticle({ ...article })
+      setFormArticle({ ...article, draftId: draft.id })
     } else {
       setFormArticle({
         draftId: draft.id,
